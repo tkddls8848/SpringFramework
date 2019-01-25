@@ -1,0 +1,16 @@
+package project;
+
+import org.springframework.context.support.GenericApplicationContext;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+		
+		TransportationWalk tw = new TransportationWalk();
+		tw.move();
+		
+		GenericXmlApplicationContext ctx = new GenericApplicationContext("classpath:applicationContext.xml");
+
+	}
+
+}
