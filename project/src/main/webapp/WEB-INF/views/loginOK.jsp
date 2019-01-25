@@ -2,13 +2,14 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Login</title>
+	<title>LoginOK</title>
 </head>
 <body>
-<h1>
-	Login  
-</h1>
 
-<P>  Loginkey is ${loginkey}. </P>
+	<h1>LoginOK</h1>
+
+	<P>ID is ${memID}.</P><br>
+	<P>PW is ${memPW}.</P>
+	
 </body>
 </html>
