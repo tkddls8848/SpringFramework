@@ -5,9 +5,9 @@ public class Member {
 	private String id;
 	private String pw;
 	private String email;
-	private int phone1;
-	private int phone2;
-	private int phone3;
+	private String phone1;
+	private String phone2;
+	private String phone3;
 	
 	public String getId() {
 		return id;
@@ -27,22 +27,22 @@ public class Member {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhone1() {
+	public String getPhone1() {
 		return phone1;
 	}
-	public void setPhone1(int phone1) {
+	public void setPhone1(String phone1) {
 		this.phone1 = phone1;
 	}
-	public int getPhone2() {
+	public String getPhone2() {
 		return phone2;
 	}
-	public void setPhone2(int phone2) {
+	public void setPhone2(String phone2) {
 		this.phone2 = phone2;
 	}
-	public int getPhone3() {
+	public String getPhone3() {
 		return phone3;
 	}
-	public void setPhone3(int phone3) {
+	public void setPhone3(String phone3) {
 		this.phone3 = phone3;
 	}
 	

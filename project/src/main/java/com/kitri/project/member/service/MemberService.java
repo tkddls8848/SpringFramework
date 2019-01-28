@@ -13,15 +13,18 @@ public class MemberService implements IMemberService{
 	MemberDao dao;
 
 	@Override
-	public void memberRegister(String id, String pw, String email, int phone1, int phone2, int phone3) {
-		// TODO Auto-generated method stub
+	public void memberRegister(String id, String pw, String email, String phone1, String phone2, String phone3) {
+		
+		dao.memberInsert(id, pw, email, phone1, phone2, phone3);
 		
 	}
 
 	@Override
 	public Member memberSearch(String id, String pw) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Member member = dao.memberSelect(id, pw);
+		
+		return member;
 	}
 
 	@Override

@@ -8,10 +8,11 @@
 
 	<h1>JoinOK</h1>
 
-	<P>ID is ${memID}.</P><br>
-	<P>PW is ${memPW}.</P><br>
-	<P>EMAIL is ${memEMAIL}.</P><br>
-	<P>PHONE is (${memPHONE1}) ${memPHONE2} ${memPHONE3}.</P>
-
+	<P>ID is ${mem.memID}.</P><br>
+	<P>PW is ${mem.memPW}.</P><br>
+	<P>EMAIL is ${mem.memEMAIL}.</P><br>
+	<P>PHONE is (${mem.memPHONE1}) ${mem.memPHONE2} ${mem.memPHONE3}.</P>
+	
+	<p>${servertime}</p>
 </body>
 </html>
