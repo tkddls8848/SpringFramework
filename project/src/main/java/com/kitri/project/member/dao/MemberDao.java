@@ -1,6 +1,7 @@
 package com.kitri.project.member.dao;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -16,38 +17,36 @@ public class MemberDao implements IMemberDao{
 	}
 	
 	@Override
-	public Member memberSelect(String id, String pw) {
+	public Member memberSelect(Member member) {
 		
-		Member member = map.get(id);
+		map.get(member.getId());
 		
 		return member;
 	}
 
 	@Override
-	public void memberInsert(String id, String pw, String email, String phone1, String phone2, String phone3) {
+	public Map<String, Member> memberInsert(Member member) {
 		
-		Member member = new Member();
+		map.put(member.getId(), member);
 		
-		member.setId(id);
-		member.setPw(pw);
-		member.setEmail(email);
-		member.setPhone1(phone1);
-		member.setPhone2(phone2);
-		member.setPhone3(phone3);
-		
-		map.put(id, member);
+		return map;
 		
 	}
 
 	@Override
-	public void memberUpdate() {
-		// TODO Auto-generated method stub
+	public Member memberUpdate(Member member) {
 		
+		map.put(member.getId(), member);
+		
+		return map.get(member.getId());
 	}
 
 	@Override
-	public void memberDelete() {
-		// TODO Auto-generated method stub
+	public Map<String, Member> memberDelete(Member member) {
+
+		map.remove(member.getId(), member);
+		
+		return map;
 		
 	}
 

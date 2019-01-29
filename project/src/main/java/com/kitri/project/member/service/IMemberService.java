@@ -4,9 +4,9 @@ import com.kitri.project.member.Member;
 
 public interface IMemberService {
 
-	void memberRegister(String id, String pw, String email, String phone1, String phone2, String phone3);
-	Member memberSearch(String id, String pw);
-	void memberModify();
-	void memberRemove();
+	void memberRegister(Member member);
+	void memberSearch(Member member);
+	Member[] memberModify(Member member);
+	void memberRemove(Member member);
 	
 }
