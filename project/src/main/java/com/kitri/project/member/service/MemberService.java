@@ -19,14 +19,14 @@ public class MemberService implements IMemberService{
 	@Override
 	public void memberRegister(Member member) {
 		
-		dao.memberInsert(member);
+		printMembers(dao.memberInsert(member));
 		
 	}
 
 	@Override
 	public void memberSearch(Member member) {
 		
-		dao.memberSelect(member);
+		printMember(dao.memberSelect(member));
 
 	}
 
@@ -35,7 +35,7 @@ public class MemberService implements IMemberService{
 
 		Member memBefore = dao.memberSelect(member);
 		Member memAfter = dao.memberUpdate(member);
-		
+		printMember(memAfter);
 		Member[] memstat = {memBefore, memAfter};//수정전 수정후 정보표시
 		
 		return memstat;
@@ -45,7 +45,7 @@ public class MemberService implements IMemberService{
 	@Override
 	public void memberRemove(Member member) {
 		
-		dao.memberDelete(member);
+		printMembers(dao.memberDelete(member));
 		
 	}
 
