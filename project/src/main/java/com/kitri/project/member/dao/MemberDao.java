@@ -19,7 +19,7 @@ public class MemberDao implements IMemberDao{
 	@Override
 	public Member memberSelect(Member member) {
 		
-		map.get(member.getId());
+		map.get(member.getMemID());
 		
 		return member;
 	}
@@ -27,7 +27,7 @@ public class MemberDao implements IMemberDao{
 	@Override
 	public Map<String, Member> memberInsert(Member member) {
 		
-		map.put(member.getId(), member);
+		map.put(member.getMemID(), member);
 		
 		return map;
 		
@@ -36,15 +36,15 @@ public class MemberDao implements IMemberDao{
 	@Override
 	public Member memberUpdate(Member member) {
 		
-		map.put(member.getId(), member);
+		map.put(member.getMemID(), member);
 		
-		return map.get(member.getId());
+		return map.get(member.getMemID());
 	}
 
 	@Override
 	public Map<String, Member> memberDelete(Member member) {
 
-		map.remove(member.getId(), member);
+		map.remove(member.getMemID(), member);
 		
 		return map;
 		

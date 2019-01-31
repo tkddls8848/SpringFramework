@@ -8,8 +8,8 @@
 
 	<h1>LoginOK</h1>
 
-	<P>ID is ${memID}.</P><br>
-	<P>PW is ${memPW}.</P>
+	<P>ID is ${member.memID}.</P><br>
+	<P>PW is ${member.memPW}.</P>
 	
 </body>
 </html>

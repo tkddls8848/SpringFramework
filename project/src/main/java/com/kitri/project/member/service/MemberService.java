@@ -52,9 +52,9 @@ public class MemberService implements IMemberService{
 	private void printMember(Member member){
 		
 		System.out.println(
-				"Member ID : " + member.getId() +
-				"Member PW : " + member.getPw() +
-				"Member EMAIL : " + member.getEmail()
+				"Member ID : " + member.getMemID() + "||" +
+				"Member PW : " + member.getMemPW() + "||" +
+				"Member EMAIL : " + member.getMemEMAIL()
 				);
 		
 	}
@@ -66,14 +66,10 @@ public class MemberService implements IMemberService{
 		
 		while(i.hasNext()) {
 			
-			System.out.println(
-					
-				"Member ID : "+ map.get(keys).getId() +
-				"Member PW : "+ map.get(keys).getPw() +
-				"Member EMAIL : "+ map.get(keys).getEmail() + 
-				"==========================================="
-				
-				);
+			String key = i.next();
+			Member member = map.get(key);
+			
+			printMember(member);
 			
 		}
 	}

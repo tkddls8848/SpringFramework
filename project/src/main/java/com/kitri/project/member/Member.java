@@ -2,48 +2,48 @@ package com.kitri.project.member;
 
 public class Member {
 	
-	private String id;
-	private String pw;
-	private String email;
-	private String phone1;
-	private String phone2;
-	private String phone3;
+	private String memID;
+	private String memPW;
+	private String memEMAIL;
+	private String memPHONE1;
+	private String memPHONE2;
+	private String memPHONE3;
 	
-	public String getId() {
-		return id;
+	public String getMemID() {
+		return memID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setMemID(String id) {
+		this.memID = id;
 	}
-	public String getPw() {
-		return pw;
+	public String getMemPW() {
+		return memPW;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setMemPW(String pw) {
+		this.memPW = pw;
 	}
-	public String getEmail() {
-		return email;
+	public String getMemEMAIL() {
+		return memEMAIL;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMemEMAIL(String email) {
+		this.memEMAIL = email;
 	}
-	public String getPhone1() {
-		return phone1;
+	public String getMemPHONE1() {
+		return memPHONE1;
 	}
-	public void setPhone1(String phone1) {
-		this.phone1 = phone1;
+	public void setMemPHONE1(String phone1) {
+		this.memPHONE1 = phone1;
 	}
-	public String getPhone2() {
-		return phone2;
+	public String getMemPHONE2() {
+		return memPHONE2;
 	}
-	public void setPhone2(String phone2) {
-		this.phone2 = phone2;
+	public void setMemPHONE2(String phone2) {
+		this.memPHONE2 = phone2;
 	}
-	public String getPhone3() {
-		return phone3;
+	public String getMemPHONE3() {
+		return memPHONE3;
 	}
-	public void setPhone3(String phone3) {
-		this.phone3 = phone3;
+	public void setMemPHONE3(String phone3) {
+		this.memPHONE3 = phone3;
 	}
 	
 
