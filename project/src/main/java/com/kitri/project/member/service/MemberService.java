@@ -24,9 +24,11 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
-	public void memberSearch(Member member) {
+	public Member memberSearch(Member member) {
 		
 		printMember(dao.memberSelect(member));
+		
+		return member;
 
 	}
 
@@ -36,7 +38,7 @@ public class MemberService implements IMemberService{
 		Member memBefore = dao.memberSelect(member);
 		Member memAfter = dao.memberUpdate(member);
 		printMember(memAfter);
-		Member[] memstat = {memBefore, memAfter};//¼öÁ¤Àü ¼öÁ¤ÈÄ Á¤º¸Ç¥½Ã
+		Member[] memstat = {memBefore, memAfter};
 		
 		return memstat;
 		
@@ -61,8 +63,8 @@ public class MemberService implements IMemberService{
 	
 	private void printMembers(Map<String, Member> map) {
 		
-		Set<String> keys = map.keySet();//Áßº¹ Å°°ª Á¦°Å
-		Iterator<String> i = keys.iterator();//while¹® »ç¿ëÀ» À§ÇÑ Å° °ª ¼ø¿­ Á¤·Ä
+		Set<String> keys = map.keySet();//ï¿½ßºï¿½ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		Iterator<String> i = keys.iterator();//whileï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å° ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		while(i.hasNext()) {
 			

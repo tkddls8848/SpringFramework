@@ -1,7 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>JoinOK</title>
 </head>
 <body>
@@ -14,5 +17,8 @@
 	<P>PHONE is (${mem.memPHONE1}) ${mem.memPHONE2} ${mem.memPHONE3}.</P>
 	
 	<p>${servertime}</p>
+	
+	<a href="/project/member/main">Main</a>
+	
 </body>
 </html>

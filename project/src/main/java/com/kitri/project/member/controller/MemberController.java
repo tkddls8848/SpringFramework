@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,43 +35,64 @@ public class MemberController {
 		return dateformat.format(date);
 		
 	}
-		
+	
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public String main() {
+		return "main";
+	}
+	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public String memberJoin(@ModelAttribute("mem") Member member) {		
+	public String memberInsert(@ModelAttribute("mem") Member member, HttpSession session) {		
+		
+		session.setAttribute("session", member);
 		
 		service.memberRegister(member);
 		
-		return "joinOK";
+		return "member/joinOK";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String memberSearch(Member member) {
+	public String memberSearch(Member member, HttpSession session) {
 		
-		service.memberSearch(member);
+		Member m = service.memberSearch(member);
+		session.setAttribute("session", m);
 		
-		return "loginOK";
+		return "member/loginOK";
+	}
+	
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String memberLogout(Member member, HttpSession session) {
+		session.invalidate();
+		return "member/logoutOK";
 	}
 	
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public ModelAndView memberModify(Member member) {
+	public ModelAndView memberModify(Member member, HttpSession session) {
 		
 		Member[] members = service.memberModify(member);
+		
+		session.setAttribute("session", members);
 		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("memBefore", members[0]);
 		mav.addObject("memAfter", members[1]);
-		mav.setViewName("modifyOK");
+		mav.setViewName("member/modifyOK");
 		
 		return mav;
 	}
 	
 	@RequestMapping(value="/remove", method=RequestMethod.POST)
-	public String memberRemove(Member member){
+	public String memberRemove(Member member, Model model, HttpSession session){
+		
+		String s = member.getMemID();
+		model.addAttribute("mem", s);
+		
+		session.invalidate();
 		
 		service.memberRemove(member);
 		
-		return "removeOK";
+		return "member/removeOK";
 		
 	}
 	
