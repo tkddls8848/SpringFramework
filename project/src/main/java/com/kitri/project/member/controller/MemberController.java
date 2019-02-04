@@ -41,6 +41,11 @@ public class MemberController {
 		return "main";
 	}
 	
+	@RequestMapping(value="/redirect", method=RequestMethod.GET)
+	public String redirect() {
+		return "redirect";
+	}
+	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String memberInsert(@ModelAttribute("mem") Member member, HttpSession session) {		
 		
@@ -68,7 +73,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public ModelAndView memberModify(Member member, HttpSession session) {
-		
+			
 		Member[] members = service.memberModify(member);
 		
 		session.setAttribute("session", members);
@@ -78,22 +83,33 @@ public class MemberController {
 		mav.addObject("memBefore", members[0]);
 		mav.addObject("memAfter", members[1]);
 		mav.setViewName("member/modifyOK");
-		
+					
 		return mav;
+
 	}
 	
-	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	@RequestMapping(value="/remove", method=RequestMethod.GET)
 	public String memberRemove(Member member, Model model, HttpSession session){
 		
-		String s = member.getMemID();
-		model.addAttribute("mem", s);
+		Member mem = (Member) session.getAttribute("session");
 		
-		session.invalidate();
-		
-		service.memberRemove(member);
-		
-		return "member/removeOK";
-		
+		if(mem == null) {
+			
+			return "redirect:/member/redirect";
+			
+		} else {
+			
+			String s = member.getMemID();
+			model.addAttribute("mem", s);
+			
+			session.invalidate();
+			
+			service.memberRemove(member);
+			
+			return "member/removeOK";
+			
+		}
+			
 	}
 	
 }

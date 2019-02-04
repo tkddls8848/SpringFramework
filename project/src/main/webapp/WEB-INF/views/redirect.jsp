@@ -8,24 +8,12 @@
 <title>Member Session</title>
 </head>
 <body>
-	<h1>MAIN</h1>
-
-	<c:if test="${empty session}">
+	<h1>REDIRECT PAGE</h1>
 	
 	You`re not login.<br>
 	
 		<a href="/project/resources/html/member/memberJoin.html">Join</a>
 		<a href="/project/resources/html/member/memberLogin.html">Login</a>
-	</c:if>
-	
-	<c:if test="${!empty session}">
-	
-	${session.memID} has session<br>
-	
-		<a href="/project/resources/html/member/memberModify.html">Modify</a>
-		<a href="/project/resources/html/member/memberRemove.html">Remove</a>
-		<a href="/project/member/logout">Logout</a>		
-	</c:if>
 
 </body>
 </html>
