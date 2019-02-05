@@ -8,7 +8,7 @@ import com.kitri.project.member.Member;
 public interface IMemberDao {
 
 	Member memberSelect(Member member);
-	Map<String, Member> memberInsert(Member member);
+	int memberInsert(Member member);
 	Member memberUpdate(Member member);
 	Map<String, Member> memberDelete(Member member);
 	
