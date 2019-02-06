@@ -1,16 +1,22 @@
 package com.kitri.project.member.dao;
 
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import com.kitri.project.member.Member;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Component
 public class MemberDao implements IMemberDao{
@@ -20,62 +26,92 @@ public class MemberDao implements IMemberDao{
 	private String pw = "system";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	
-	private Connection conn = null;
-	private PreparedStatement pstmt = null;
-	private ResultSet rs = null;
+	private ComboPooledDataSource datasource;
 	
-	private HashMap<String, Member> map;
+	private JdbcTemplate template;
+	
+//	private Connection conn = null;
+//	private PreparedStatement pstmt = null;
+//	private ResultSet rs = null;
 
 	public MemberDao() {
-		//map = new HashMap<String, Member>();
+		
+		datasource = new ComboPooledDataSource();
+		
+		try {
+			datasource.setDriverClass(driver);
+			datasource.setUser(id);
+			datasource.setPassword(pw);
+			datasource.setJdbcUrl(url);
+		} catch (PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		template = new JdbcTemplate(datasource);
+		template.setDataSource(datasource);
+		
 	}
 	
 	@Override
-	public Member memberSelect(Member member) {
+	public Member memberSelect(final Member member) {
+		List<Member> members = null;
 		
-		map.get(member.getMemID());
+		final String sql = "SELECT * FROM member WHERE memID = ? and memPW = ?";
 		
-		return member;
+		members = template.query(sql, new Object[]{member.getMemID(), member.getMemPW()}, new RowMapper<Member>() {
+			
+			@Override
+			public Member mapRow(ResultSet rs, int rowNum) {
+				Member mem = new Member();
+				try {
+					mem.setMemID(rs.getString("memID"));
+					mem.setMemPW(rs.getString("memPW"));
+					mem.setMemEMAIL(rs.getString("memEMAIL"));
+					mem.setMemPHONE1(rs.getString("memPHONE1"));
+					mem.setMemPHONE2(rs.getString("memPHONE2"));
+					mem.setMemPHONE3(rs.getString("memPHONE3"));
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+				return mem;
+			}
+			
+		});
+		
+		if(members.isEmpty()) 
+			return null;
+		
+		return members.get(0);
 	}
 	
 
 	@Override
-	public int memberInsert(Member member) {
+	public int memberInsert(final Member member) {
 		
 		int result = 0;
 		
-		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, id, pw);
-			String sql = "insert into member(memID, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3) "
-					+ "values (?, ?, ?, ?, ?, ?)";
-			pstmt.setString(1, member.getMemID());
-			pstmt.setString(2, member.getMemPW());
-			pstmt.setString(3, member.getMemEMAIL());
-			pstmt.setString(4, member.getMemPHONE1());
-			pstmt.setString(5, member.getMemPHONE2());
-			pstmt.setString(6, member.getMemPHONE3());
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if(pstmt != null) {
-					pstmt.close();
-				}
-				if(conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-		}
+		final String sql = "insert into member(memID, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3) "
+				+ "values (?, ?, ?, ?, ?, ?)";
 		
-		return 0;
+		result = template.update(sql, new PreparedStatementSetter() {
+
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				
+				ps.setString(1, member.getMemID());
+				ps.setString(2, member.getMemPW());
+				ps.setString(3, member.getMemEMAIL());
+				ps.setString(4, member.getMemPHONE1());
+				ps.setString(5, member.getMemPHONE2());
+				ps.setString(6, member.getMemPHONE3());
+				
+			}
+			
+		});
+		
+		return result;
 		
 	}
 
