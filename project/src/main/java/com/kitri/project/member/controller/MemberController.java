@@ -74,14 +74,13 @@ public class MemberController {
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public ModelAndView memberModify(Member member, HttpSession session) {
 			
-		Member[] members = service.memberModify(member);
+		Member members = service.memberModify(member);
 		
 		session.setAttribute("session", members);
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.addObject("memBefore", members[0]);
-		mav.addObject("memAfter", members[1]);
+		mav.addObject("memINFO", members);
 		mav.setViewName("member/modifyOK");
 					
 		return mav;

@@ -9,7 +9,7 @@ public interface IMemberDao {
 
 	Member memberSelect(Member member);
 	int memberInsert(Member member);
-	Member memberUpdate(Member member);
-	Map<String, Member> memberDelete(Member member);
+	int memberUpdate(Member member);
+	int memberDelete(Member member);
 	
 }

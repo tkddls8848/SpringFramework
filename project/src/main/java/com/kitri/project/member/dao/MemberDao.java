@@ -116,19 +116,47 @@ public class MemberDao implements IMemberDao{
 	}
 
 	@Override
-	public Member memberUpdate(Member member) {
+	public int memberUpdate(final Member member) {
 		
-		map.put(member.getMemID(), member);
+		int result = 0;
 		
-		return map.get(member.getMemID());
+		final String sql = "UPDATE member SET memPW = ?, memEMAIL = ?, "
+				+ "memPHONE1 = ?, memPHONE2 = ?, memPHONE3 = ? WHERE memID = ?";
+		
+		result = template.update(sql, new PreparedStatementSetter() {
+
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				
+				ps.setString(1, member.getMemPW());
+				ps.setString(2, member.getMemEMAIL());
+				ps.setString(3, member.getMemPHONE1());
+				ps.setString(4, member.getMemPHONE2());
+				ps.setString(5, member.getMemPHONE3());
+				
+			}
+			
+		});
+		
+		return result;
 	}
 
 	@Override
-	public Map<String, Member> memberDelete(Member member) {
-
-		map.remove(member.getMemID(), member);
+	public int memberDelete(final Member member) {
 		
-		return map;
+		int result = 0;
+		
+		final String sql = "DELETE member WHERE memID = ? ";
+		
+		result = template.update(sql, new PreparedStatementSetter() {
+			
+			@Override
+			public void setValues(PreparedStatement ps) throws SQLException {
+				ps.setString(1, member.getMemID());
+			}
+		});
+		
+		return result;
 		
 	}
 

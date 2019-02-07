@@ -27,61 +27,50 @@ public class MemberService implements IMemberService{
 			System.out.println("member insert success");
 		}
 		
-		//printMembers(dao.memberInsert(member));
-		
 	}
 
 	@Override
 	public Member memberSearch(Member member) {
 		
-		printMember(dao.memberSelect(member));
+		Member mem = dao.memberSelect(member);
+		
+		if(mem != null) {
+			System.out.println("select complete");
+		} else {
+			System.out.println("select fail");
+		}
+		
+		return mem;
+
+	}
+
+	@Override
+	public Member memberModify(Member member) {
+
+		int result = dao.memberUpdate(member);
+		
+		if(result != 0) {
+			System.out.println("update complete");
+		} else {
+			System.out.println("update fail");
+			return null;
+		}
 		
 		return member;
-
-	}
-
-	@Override
-	public Member[] memberModify(Member member) {
-
-		Member memBefore = dao.memberSelect(member);
-		Member memAfter = dao.memberUpdate(member);
-		printMember(memAfter);
-		Member[] memstat = {memBefore, memAfter};
-		
-		return memstat;
 		
 	}
 
 	@Override
-	public void memberRemove(Member member) {
+	public int memberRemove(Member member) {
 		
-		printMembers(dao.memberDelete(member));
+		int result = dao.memberDelete(member);
 		
-	}
-
-	private void printMember(Member member){
-		
-		System.out.println(
-				"Member ID : " + member.getMemID() + "||" +
-				"Member PW : " + member.getMemPW() + "||" +
-				"Member EMAIL : " + member.getMemEMAIL()
-				);
-		
-	}
-	
-	private void printMembers(Map<String, Member> map) {
-		
-		Set<String> keys = map.keySet();//�ߺ� Ű�� ����
-		Iterator<String> i = keys.iterator();//while�� ����� ���� Ű �� ���� ����
-		
-		while(i.hasNext()) {
-			
-			String key = i.next();
-			Member member = map.get(key);
-			
-			printMember(member);
-			
+		if(result != 0) {
+			System.out.println("update complete");
+		} else {
+			System.out.println("update fail");
 		}
+		return result;
 	}
 	
 }
