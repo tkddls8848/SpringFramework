@@ -2616,3 +2616,261 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:31:26.634
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:43.001
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.lSSrwKoX
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:43.002
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.lSSrwKoX
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:43.004
+!MESSAGE subsribers = null
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:43.005
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.lSSrwKoX => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.752
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.jObmUhRN
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.756
+!MESSAGE subscribing to classpath changes: sts4.classpath.jObmUhRN
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.757
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.759
+!MESSAGE subsribers = [sts4.classpath.jObmUhRN]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.760
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.763
+!MESSAGE project project ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.765
+!MESSAGE Preparing classpath changed notification project
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.767
+!MESSAGE project Servers ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.769
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.770
+!MESSAGE project Servers SKIPPED
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.772
+!MESSAGE project ch10_pjt_02 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.774
+!MESSAGE project ch12_pjt_01 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.775
+!MESSAGE project ch12_pjt_02 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.777
+!MESSAGE project ch12_pjt_03 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.780
+!MESSAGE project ch12_pjt_04 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.783
+!MESSAGE project ch14_pjt_01 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.785
+!MESSAGE classpath=47 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.786
+!MESSAGE project ch14_pjt_02 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.788
+!MESSAGE executing callback sts4.classpath.jObmUhRN project false 47
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.792
+!MESSAGE project ch14_pjt_03 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.795
+!MESSAGE project lec17Pjt001 ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.798
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:48.800
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.jObmUhRN => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.061
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.064
+!MESSAGE Preparing classpath changed notification lec17Pjt001
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.067
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.072
+!MESSAGE classpath=40 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.073
+!MESSAGE executing callback sts4.classpath.jObmUhRN lec17Pjt001 false 40
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.088
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.090
+!MESSAGE Preparing classpath changed notification ch14_pjt_03
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.091
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.094
+!MESSAGE classpath=45 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.095
+!MESSAGE executing callback sts4.classpath.jObmUhRN ch14_pjt_03 false 45
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.102
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.104
+!MESSAGE Preparing classpath changed notification ch14_pjt_02
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.105
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.109
+!MESSAGE classpath=45 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.111
+!MESSAGE executing callback sts4.classpath.jObmUhRN ch14_pjt_02 false 45
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.121
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.123
+!MESSAGE Preparing classpath changed notification ch14_pjt_01
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.125
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.128
+!MESSAGE classpath=41 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.130
+!MESSAGE executing callback sts4.classpath.jObmUhRN ch14_pjt_01 false 41
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.138
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.139
+!MESSAGE Preparing classpath changed notification ch12_pjt_04
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.140
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.144
+!MESSAGE classpath=40 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.145
+!MESSAGE executing callback sts4.classpath.jObmUhRN ch12_pjt_04 false 40
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.152
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.153
+!MESSAGE Preparing classpath changed notification ch12_pjt_03
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.154
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.157
+!MESSAGE classpath=40 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.158
+!MESSAGE executing callback sts4.classpath.jObmUhRN ch12_pjt_03 false 40
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.167
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.169
+!MESSAGE Preparing classpath changed notification ch12_pjt_02
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.170
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.173
+!MESSAGE classpath=40 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.174
+!MESSAGE executing callback sts4.classpath.jObmUhRN ch12_pjt_02 false 40
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.182
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.184
+!MESSAGE Preparing classpath changed notification ch12_pjt_01
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.185
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.188
+!MESSAGE classpath=40 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.190
+!MESSAGE executing callback sts4.classpath.jObmUhRN ch12_pjt_01 false 40
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.199
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.201
+!MESSAGE Preparing classpath changed notification ch10_pjt_02
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.202
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.206
+!MESSAGE classpath=40 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.207
+!MESSAGE executing callback sts4.classpath.jObmUhRN ch10_pjt_02 false 40
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-02-07 12:46:49.215
+!MESSAGE executing callback sts4.classpath.jObmUhRN SUCCESS [done]
+
+!ENTRY org.eclipse.jface.text 2 0 2019-02-07 12:47:54.124
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.jface.text 2 0 2019-02-07 12:47:54.178
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:48:10.073
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:48:10.078
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:51:03.302
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:51:03.307
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.jface.text 2 0 2019-02-07 12:51:17.929
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:55:05.219
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:55:05.219
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:55:13.094
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:55:13.109
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:56:49.545
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2019-02-07 12:56:49.545
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!

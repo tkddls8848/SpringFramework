@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>JoinOK</title>
+<style type="text/css">
+table {
+	boarder: 1px solid black;
+}
+</style>
 </head>
 <body>
 
