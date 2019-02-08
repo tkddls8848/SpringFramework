@@ -7,7 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.kitri.project.member.Member;
+import com.kitri.project.member.MemberDTO;
 import com.kitri.project.member.dao.MemberDao;
 
 @Service
@@ -17,7 +17,7 @@ public class MemberService implements IMemberService{
 	MemberDao dao;
 
 	@Override
-	public void memberRegister(Member member) {
+	public void memberRegister(MemberDTO member) {
 		
 		int result = dao.memberInsert(member);
 		
@@ -30,9 +30,9 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
-	public Member memberSearch(Member member) {
+	public MemberDTO memberSearch(MemberDTO member) {
 		
-		Member mem = dao.memberSelect(member);
+		MemberDTO mem = dao.memberSelect(member);
 		
 		if(mem != null) {
 			System.out.println("select complete");
@@ -45,7 +45,7 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
-	public Member memberModify(Member member) {
+	public MemberDTO memberModify(MemberDTO member) {
 
 		int result = dao.memberUpdate(member);
 		
@@ -61,7 +61,7 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
-	public int memberRemove(Member member) {
+	public int memberRemove(MemberDTO member) {
 		
 		int result = dao.memberDelete(member);
 		

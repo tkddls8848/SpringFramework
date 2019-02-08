@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kitri.project.member.Member;
+import com.kitri.project.member.MemberDTO;
 import com.kitri.project.member.service.MemberService;
 
 @Controller
@@ -47,7 +47,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
-	public String memberInsert(@ModelAttribute("mem") Member member, HttpSession session) {		
+	public String memberInsert(@ModelAttribute("mem") MemberDTO member, HttpSession session) {		
 		
 		session.setAttribute("session", member);
 		
@@ -57,24 +57,24 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String memberSearch(Member member, HttpSession session) {
+	public String memberSearch(MemberDTO member, HttpSession session) {
 		
-		Member m = service.memberSearch(member);
+		MemberDTO m = service.memberSearch(member);
 		session.setAttribute("session", m);
 		
 		return "member/loginOK";
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String memberLogout(Member member, HttpSession session) {
+	public String memberLogout(MemberDTO member, HttpSession session) {
 		session.invalidate();
 		return "member/logoutOK";
 	}
 	
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public ModelAndView memberModify(Member member, HttpSession session) {
+	public ModelAndView memberModify(MemberDTO member, HttpSession session) {
 			
-		Member members = service.memberModify(member);
+		MemberDTO members = service.memberModify(member);
 		
 		session.setAttribute("session", members);
 		
@@ -88,9 +88,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/remove", method=RequestMethod.GET)
-	public String memberRemove(Member member, Model model, HttpSession session){
+	public String memberRemove(MemberDTO member, Model model, HttpSession session){
 		
-		Member mem = (Member) session.getAttribute("session");
+		MemberDTO mem = (MemberDTO) session.getAttribute("session");
 		
 		if(mem == null) {
 			
