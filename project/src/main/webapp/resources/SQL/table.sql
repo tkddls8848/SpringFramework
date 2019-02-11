@@ -9,6 +9,30 @@ memPHONE varchar2(20)
 
 drop table member;
 
+create table board(
+	bno number PRIMARY KEY,
+	title varchar2(50),
+	content varchar2(3000),
+	nickName varchar2(20),
+	regdate date DEFAULT sysdate,
+	viewcnt number DEFAULT 0
+);
+
+drop table board;
+
+select * from board;
+
+select bno, title, content, regdate, viewcnt 
+from board
+order by bno desc;
+
+insert into board (bno, title, content, nickName) 
+values ((select nvl(max (bno)+1,1) from board), 'title', 'content', 'nickName');
+
+update;
+
+delete;
+
 commit;
 
 rollback;

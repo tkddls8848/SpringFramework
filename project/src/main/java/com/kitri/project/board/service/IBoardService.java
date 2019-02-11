@@ -1,12 +1,23 @@
 package com.kitri.project.board.service;
 
-import com.kitri.project.member.MemberDTO;
+import java.util.List;
+
+import com.kitri.project.board.BoardDTO;
 
 public interface IBoardService {
 
-	void memberRegister(MemberDTO member);
-	MemberDTO memberSearch(MemberDTO member);
-	MemberDTO memberModify(MemberDTO member);
-	int memberRemove(MemberDTO member);
+	void deleteFiles(String fullName);
+	List<String> selectFiles(int bno);
+	void insertFiles(String fullName);
+	void updateFiles(String fullName, int bno);
+	
+	void deleteBoard(int bno);
+	BoardDTO selectBoard(int bno);
+	List<BoardDTO> selectAllBoard(int start, int end, String Search_option, String keyword);
+	void insertBoard(BoardDTO dto);
+	void updateBoard(BoardDTO dto);	
+	
+	void increaseViewCnt(int bno);
+	int searchBoard(String search_option, String keyword);
 	
 }

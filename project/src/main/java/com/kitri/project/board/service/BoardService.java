@@ -1,76 +1,87 @@
 package com.kitri.project.board.service;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kitri.project.board.BoardDTO;
+import com.kitri.project.board.dao.BoardDAO;
 import com.kitri.project.member.MemberDTO;
-import com.kitri.project.member.dao.MemberDao;
 
 @Service
 public class BoardService implements IBoardService{
+
+	@Inject
+	BoardDAO boardDAO;
 	
-	@Autowired
-	MemberDao dao;
-
 	@Override
-	public void memberRegister(MemberDTO member) {
-		
-		int result = dao.memberInsert(member);
-		
-		if(result == 0) {
-			System.out.println("member insert fail");
-		} else {
-			System.out.println("member insert success");
-		}
+	public void deleteFiles(String fullName) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public MemberDTO memberSearch(MemberDTO member) {
-		
-		MemberDTO mem = dao.memberSelect(member);
-		
-		if(mem != null) {
-			System.out.println("select complete");
-		} else {
-			System.out.println("select fail");
-		}
-		
-		return mem;
-
+	public List<String> selectFiles(int bno) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public MemberDTO memberModify(MemberDTO member) {
-
-		int result = dao.memberUpdate(member);
-		
-		if(result != 0) {
-			System.out.println("update complete");
-		} else {
-			System.out.println("update fail");
-			return null;
-		}
-		
-		return member;
+	public void insertFiles(String fullName) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int memberRemove(MemberDTO member) {
+	public void updateFiles(String fullName, int bno) {
+		// TODO Auto-generated method stub
 		
-		int result = dao.memberDelete(member);
+	}
+
+	@Override
+	public void deleteBoard(int bno) {
+		// TODO Auto-generated method stub
 		
-		if(result != 0) {
-			System.out.println("update complete");
-		} else {
-			System.out.println("update fail");
-		}
-		return result;
+	}
+
+	@Override
+	public BoardDTO selectBoard(int bno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<BoardDTO> selectAllBoard(int start, int end, String Search_option, String keyword) {
+		
+		return boardDAO.selectAllBoard(start, end, Search_option, keyword);
+	}
+
+	@Override
+	public void insertBoard(BoardDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateBoard(BoardDTO dto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void increaseViewCnt(int bno) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int searchBoard(String search_option, String keyword) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

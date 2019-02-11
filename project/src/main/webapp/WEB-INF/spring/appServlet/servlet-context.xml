@@ -21,8 +21,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.kitri.project.*" />
-	
+	<!-- controller 스캔 -->
+	<context:component-scan base-package="com.kitri.project.member.controller" />
+	<context:component-scan base-package="com.kitri.project.board.controller" />
+		
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/modify"></mapping>

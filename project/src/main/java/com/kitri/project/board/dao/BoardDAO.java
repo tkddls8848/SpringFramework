@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kitri.project.board.BoardDTO;
 
 @Repository
-public class BoardDao implements IBoardDao{
+public class BoardDAO implements IBoardDAO{
 	
 	@Inject
 	SqlSession sqlsession;
@@ -52,8 +53,8 @@ public class BoardDao implements IBoardDao{
 
 	@Override
 	public List<BoardDTO> selectAllBoard(int start, int end, String Search_option, String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return sqlsession.selectList("boardMapper.selectAllBoard");
 	}
 
 	@Override

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.kitri.project.board.BoardDTO;
 
-public interface IBoardDao {
+public interface IBoardDAO {
 
 	void deleteFiles(String fullName);
 	List<String> selectFiles(int bno);
