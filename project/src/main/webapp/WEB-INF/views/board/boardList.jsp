@@ -6,9 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>BoardList</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(function(){
+	$("#btnWrite").click(function(){
+		location.href="${path}/board/write";
+	});
+});
+</script>
 </head>
 <body>
-	
 	<table>
 	<thead>
 		<tr>
@@ -32,5 +39,7 @@
 	</tbody>
 	</table>
 	
+	<input type="button" value="글쓰기" id="btnWrite">
+
 </body>
 </html>

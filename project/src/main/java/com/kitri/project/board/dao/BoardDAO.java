@@ -13,7 +13,7 @@ import com.kitri.project.board.BoardDTO;
 public class BoardDAO implements IBoardDAO{
 	
 	@Inject
-	SqlSession sqlsession;
+	SqlSession sqlSession;
 
 	@Override
 	public void deleteFiles(String fullName) {
@@ -54,7 +54,7 @@ public class BoardDAO implements IBoardDAO{
 	@Override
 	public List<BoardDTO> selectAllBoard(int start, int end, String Search_option, String keyword) {
 		
-		return sqlsession.selectList("boardMapper.selectAllBoard");
+		return sqlSession.selectList("boardMapper.selectAll");
 	}
 
 	@Override

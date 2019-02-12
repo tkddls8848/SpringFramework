@@ -34,10 +34,10 @@ public class BoardController {
 		
 	}
 	
-	@RequestMapping(value="/list", method=RequestMethod.POST)
+	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public ModelAndView boardList() {		
 		
-		List<BoardDTO> list = boardservice.selectAllBoard(0, 0, "keyword", "mode");
+		List<BoardDTO> list = boardservice.selectAllBoard(1, 2, "keyword", "mode");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
 		
@@ -46,6 +46,12 @@ public class BoardController {
 		mav.setViewName("board/boardList");
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="/write", method=RequestMethod.POST)
+	public String boardWrite() {		
+		
+		return "board/boardWrite";
 	}
 	
 }

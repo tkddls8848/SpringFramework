@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 
 import com.kitri.project.board.BoardDTO;
 import com.kitri.project.board.dao.BoardDAO;
-import com.kitri.project.member.MemberDTO;
+
 
 @Service
 public class BoardService implements IBoardService{
 
-	@Inject
+	@Autowired
 	BoardDAO boardDAO;
 	
 	@Override
