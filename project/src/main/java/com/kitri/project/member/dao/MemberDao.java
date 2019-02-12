@@ -15,7 +15,7 @@ import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import com.kitri.project.member.Member;
+import com.kitri.project.member.MemberDTO;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Component
@@ -54,16 +54,16 @@ public class MemberDao implements IMemberDao{
 	}
 	
 	@Override
-	public Member memberSelect(final Member member) {
-		List<Member> members = null;
+	public MemberDTO memberSelect(final MemberDTO member) {
+		List<MemberDTO> members = null;
 		
 		final String sql = "SELECT * FROM member WHERE memID = ? and memPW = ?";
 		
-		members = template.query(sql, new Object[]{member.getMemID(), member.getMemPW()}, new RowMapper<Member>() {
+		members = template.query(sql, new Object[]{member.getMemID(), member.getMemPW()}, new RowMapper<MemberDTO>() {
 			
 			@Override
-			public Member mapRow(ResultSet rs, int rowNum) {
-				Member mem = new Member();
+			public MemberDTO mapRow(ResultSet rs, int rowNum) {
+				MemberDTO mem = new MemberDTO();
 				try {
 					mem.setMemID(rs.getString("memID"));
 					mem.setMemPW(rs.getString("memPW"));
@@ -88,7 +88,7 @@ public class MemberDao implements IMemberDao{
 	
 
 	@Override
-	public int memberInsert(final Member member) {
+	public int memberInsert(final MemberDTO member) {
 		
 		int result = 0;
 		
@@ -116,7 +116,7 @@ public class MemberDao implements IMemberDao{
 	}
 
 	@Override
-	public int memberUpdate(final Member member) {
+	public int memberUpdate(final MemberDTO member) {
 		
 		int result = 0;
 		
@@ -142,7 +142,7 @@ public class MemberDao implements IMemberDao{
 	}
 
 	@Override
-	public int memberDelete(final Member member) {
+	public int memberDelete(final MemberDTO member) {
 		
 		int result = 0;
 		
