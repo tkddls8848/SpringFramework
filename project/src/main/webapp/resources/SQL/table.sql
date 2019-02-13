@@ -4,8 +4,13 @@ memPW varchar2(20),
 memEMAIL varchar2(20),
 memPHONE1 varchar2(20),
 memPHONE2 varchar2(20),
-memPHONE varchar2(20)
+memPHONE3 varchar2(20)
 );
+
+select * from member;
+
+insert into member (memID, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3)
+values ('a','a','a@a','1','1','1');
 
 drop table member;
 
