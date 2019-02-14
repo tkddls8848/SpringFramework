@@ -59,7 +59,8 @@ public class BoardDAO implements IBoardDAO{
 
 	@Override
 	public void insertBoard(BoardDTO dto) {
-		// TODO Auto-generated method stub
+		
+		sqlSession.insert("boardMapper.insert", dto);
 		
 	}
 

@@ -18,7 +18,7 @@ create table board(
 	bno number PRIMARY KEY,
 	title varchar2(50),
 	content varchar2(3000),
-	nickName varchar2(20),
+	memID varchar2(20),
 	regdate date DEFAULT sysdate,
 	viewcnt number DEFAULT 0
 );
@@ -31,12 +31,16 @@ select bno, title, content, regdate, viewcnt
 from board
 order by bno desc;
 
-insert into board (bno, title, content, nickName) 
-values ((select nvl(max (bno)+1,1) from board), 'title', 'content', 'nickName');
+create sequence	seq_board
+start with 1
+increment by 1;
+
+insert into board (bno, title, content, memID) 
+values ((seq_board.nextval), 'title', 'content', 'memID');
 
 update;
 
-delete;
+delete from board;
 
 commit;
 
