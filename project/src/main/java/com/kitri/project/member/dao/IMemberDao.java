@@ -1,15 +1,16 @@
 package com.kitri.project.member.dao;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import com.kitri.project.member.MemberDTO;
 
 public interface IMemberDao {
 
-	MemberDTO memberSelect(MemberDTO member);
-	int memberInsert(MemberDTO member);
-	int memberUpdate(MemberDTO member);
-	int memberDelete(MemberDTO member);
+	public MemberDTO memberSelect(String memID);
+	public void memberInsert(MemberDTO memberDTO);
+	public void memberUpdate(MemberDTO memberDTO);
+	public void memberDelete(MemberDTO memberDTO);
+	public List<MemberDTO> memberList();
+	public boolean checkPw(String memID, String memPW);
 	
 }

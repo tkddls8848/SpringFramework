@@ -1,8 +1,8 @@
 package com.kitri.project.member.service;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
+
+import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,64 +13,39 @@ import com.kitri.project.member.dao.MemberDao;
 @Service
 public class MemberService implements IMemberService{
 	
-	@Autowired
-	MemberDao dao;
+	@Inject
+	MemberDao memberDao;
 
 	@Override
-	public void memberRegister(MemberDTO member) {
-		
-		int result = dao.memberInsert(member);
-		
-		if(result == 0) {
-			System.out.println("member insert fail");
-		} else {
-			System.out.println("member insert success");
-		}
-		
+	public MemberDTO memberSelect(String memID) {
+		MemberDTO memberDTO = memberDao.memberSelect(memID);
+		return memberDTO;
 	}
 
 	@Override
-	public MemberDTO memberSearch(MemberDTO member) {
-		
-		MemberDTO mem = dao.memberSelect(member);
-		
-		if(mem != null) {
-			System.out.println("select complete");
-		} else {
-			System.out.println("select fail");
-		}
-		
-		return mem;
-
+	public void memberInsert(MemberDTO memberDTO) {
+		memberDao.memberInsert(memberDTO);
 	}
 
 	@Override
-	public MemberDTO memberModify(MemberDTO member) {
-
-		int result = dao.memberUpdate(member);
-		
-		if(result != 0) {
-			System.out.println("update complete");
-		} else {
-			System.out.println("update fail");
-			return null;
-		}
-		
-		return member;
-		
+	public void memberUpdate(MemberDTO memberDTO) {
+		memberDao.memberUpdate(memberDTO);
 	}
 
 	@Override
-	public int memberRemove(MemberDTO member) {
-		
-		int result = dao.memberDelete(member);
-		
-		if(result != 0) {
-			System.out.println("update complete");
-		} else {
-			System.out.println("update fail");
-		}
-		return result;
+	public void memberDelete(MemberDTO memberDTO) {
+		memberDao.memberDelete(memberDTO);
 	}
-	
+
+	@Override
+	public List<MemberDTO> memberList() {
+		return memberDao.memberList();
+	}
+
+	@Override
+	public boolean checkPw(String memID, String memPW) {
+		return memberDao.checkPw(memID, memPW);
+	}
+
+
 }

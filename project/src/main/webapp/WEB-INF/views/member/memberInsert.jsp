@@ -1,12 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 </head>
 <body>
-
-	<form action="/member/join" method="post">
+	<form name="form" action="/project/member/join" method="post">
 			ID : <input type="text" name="memID"><br>
 			PW : <input type="password" name="memPW"><br>
 			E-MAIL : <input type="email" name="memEMAIL"><br>
@@ -17,12 +19,7 @@
 			</select>
 			 - <input type="text" name="memPHONE2" placeholder="4" size="4">
 			 - <input type="text" name="memPHONE3" placeholder="4" size="4">
-	<input type="submit" value="join"><br>
+	<input type="submit" value="회원가입"><br>
 	</form>
-	
-		
-	<a href="/resources/html/member/memberLogin.html">login</a><br>
-	<a href="/member/main">main</a>
-
 </body>
 </html>
