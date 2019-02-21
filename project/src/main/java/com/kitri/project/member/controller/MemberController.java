@@ -46,9 +46,15 @@ public class MemberController {
 	}	
 	
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public String memberInsert() {
+	public String memberInsert(HttpSession session) {
 		System.out.println("memberInsert.controller");
-		return "/member/memberInsert";
+		String memID = (String) session.getAttribute("session");
+		
+		if(memID == null) {
+			return "redirect:/member/list";			
+		} else {
+			return "/member/memberInsert";			
+		}
 	}	
 	
 	@RequestMapping(value="/join", method=RequestMethod.POST)
@@ -71,9 +77,9 @@ public class MemberController {
 		System.out.println("memberModify.controller");
 		boolean result = memberService.checkPw(memberDTO.getMemID(), memberDTO.getMemPW());
 		
-		if(result == true) {
+		if(result) {
 			memberService.memberUpdate(memberDTO);
-			return "redirect:/member/list";			
+			return "redirect:/member/list";
 		} else {
 			MemberDTO dto = memberService.memberSelect(memberDTO.getMemID());
 			model.addAttribute("memberDTO", dto);
@@ -94,7 +100,7 @@ public class MemberController {
 		System.out.println("memberDelete.controller");
 		boolean result = memberService.checkPw(memberDTO.getMemID(), memberDTO.getMemPW());
 		
-		if(result == true) {	
+		if(result) {	
 			memberService.memberDelete(memberDTO);
 			return "redirect:/member/list";		
 		} else {

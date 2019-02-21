@@ -17,6 +17,9 @@ table {
 		$("#btnInsert").click(function() {
 			location.href = "/project/member/insert";
 		});
+		$("#btnLogout").click(function() {
+			location.href = "/project/logout.do";
+		});
 	});
 </script>
 </head>
@@ -41,5 +44,14 @@ table {
 		</tbody>
 	</table>
 	<input type="button" value="회원가입" id="btnInsert">
+	
+	<div id="loginWelcome">
+		${session}님 반갑습니다.
+	</div>
+	<div>
+		<input type="button" value="로그아웃" id="btnLogout">	
+	</div>
+
+		
 </body>
 </html>

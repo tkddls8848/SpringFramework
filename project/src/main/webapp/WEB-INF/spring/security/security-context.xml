@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+<security:http> 
+	<security:intercept-url pattern="/**" access="hasRole('USER')"></security:intercept-url>
+		<security:form-login></security:form-login>
+	<security:logout></security:logout>
+</security:http> 
+ 
+<!-- provider --> 
+<security:authentication-manager> 
+	<security:authentication-provider> 
+		<security:user-service> 
+			<security:user name="user" password="password" authorities="ROLE_USER"></security:user>
+		</security:user-service>
+	</security:authentication-provider> 
+</security:authentication-manager>
+
+
+</beans:beans>
+
+

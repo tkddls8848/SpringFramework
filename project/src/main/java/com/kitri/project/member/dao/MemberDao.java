@@ -47,7 +47,7 @@ public class MemberDao implements IMemberDao{
 		logger.info("memberUpdate");
 		sqlSession.update("member.memberUpdate", memberDTO);
 	}
-	
+
 	@Override
 	public void memberDelete(MemberDTO memberDTO) {
 		logger.info("memberDelete");
@@ -57,14 +57,10 @@ public class MemberDao implements IMemberDao{
 	@Override
 	public boolean checkPw(String memID, String memPW) {
 		logger.info("checkPw");
-		
 		boolean check = false;
 		Map<String, String> map = new HashMap<String, String>();
-
 		map.put("memPW", memPW);
-		
 		int count = sqlSession.selectOne("member.checkPw", map);
-		
 		if(count == 1) {
 			check = true;
 		}

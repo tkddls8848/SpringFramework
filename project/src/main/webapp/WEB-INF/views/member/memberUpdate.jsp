@@ -22,8 +22,8 @@ $(function() {
 </head>
 <body>
 <form name="form" method="POST">
-		ID : <input type="text" name="memID" value="${memberDTO.memID}"><br>
-		PW : <input type="password" name="memPW" value="${memberDTO.memPW}"><br>
+		ID : <input type="text" name="memID" value="${memberDTO.memID}" readonly><br>
+		PW : <input type="password" name="memPW" value="${memberDTO.memID}" readonly><br>
 		E-MAIL : <input type="email" name="memEMAIL" value="${memberDTO.memEMAIL}"><br>
 		PHONE : <select name="memPHONE1">
 		<option value="010">010</option>

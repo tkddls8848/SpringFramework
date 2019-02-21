@@ -29,7 +29,7 @@
 		SET memID = #{memID}, memPW = #{memPW}, memEMAIL = #{memEMAIL}, memPHONE1 = #{memPHONE1}, memPHONE2 = #{memPHONE2}, memPHONE3 = #{memPHONE3}
 		WHERE memID = #{memID}
 	</update>
-	
+		
 	<delete id="memberDelete">
 		DELETE FROM member
 		WHERE memID = #{memID}
