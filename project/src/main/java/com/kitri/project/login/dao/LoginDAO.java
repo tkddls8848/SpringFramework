@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class LoginDao implements ILoginDao{
+public class LoginDAO implements ILoginDAO{
 
 	@Inject
 	SqlSession sqlSession;

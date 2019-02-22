@@ -2,7 +2,7 @@ package com.kitri.project.login.dao;
 
 import com.kitri.project.member.MemberDTO;
 
-public interface ILoginDao {
+public interface ILoginDAO {
 
 	public String LoginCheck(String memID);
 }

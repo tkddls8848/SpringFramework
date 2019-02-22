@@ -12,36 +12,36 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kitri.project.login.service.LoginService;
 
-@Controller
+//@Controller
 public class LoginController {
-
-	@Inject
-	LoginService loginService;
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String Login(Model model) {
-		return "login";
-	}
-	
-	@RequestMapping(value = "/login")
-	public ModelAndView LoginCheck(@RequestParam String memID, @RequestParam String memPW, HttpSession session) {
-		String idCheck = loginService.LoginCheck(memID);
-		ModelAndView mav = new ModelAndView();
-		
-		if (idCheck != null) {
-			mav.setViewName("redirect:/member/list");
-			session.setAttribute("session", memID);
-			return mav;
-		} else {
-			mav.setViewName("login");
-			mav.addObject("message","error");
-			return mav;			
-		}
-	}
-	
-	@RequestMapping(value = "/logout.do")
-	public String Logout(HttpSession session) {
-		session.invalidate();
-		return "login";
-	}
+//
+//	@Inject
+//	LoginService loginService;
+//	
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String Login(Model model) {
+//		return "login";
+//	}
+//	
+//	@RequestMapping(value = "/login.do")
+//	public ModelAndView LoginCheck(@RequestParam String memID, @RequestParam String memPW, HttpSession session) {
+//		String idCheck = loginService.LoginCheck(memID);
+//		ModelAndView mav = new ModelAndView();
+//		
+//		if (idCheck != null) {
+//			mav.setViewName("redirect:/member/list");
+//			session.setAttribute("session", memID);
+//			return mav;
+//		} else {
+//			mav.setViewName("login");
+//			mav.addObject("message","error");
+//			return mav;			
+//		}
+//	}
+//	
+//	@RequestMapping(value = "/logout.do")
+//	public String Logout(HttpSession session) {
+//		session.invalidate();
+//		return "login";
+//	}
 }

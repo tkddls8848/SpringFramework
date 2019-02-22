@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kitri.project.member.MemberDTO;
-import com.kitri.project.member.dao.MemberDao;
+import com.kitri.project.member.dao.MemberDAO;
 import com.kitri.project.member.service.MemberService;
 
 @Controller
@@ -37,7 +37,7 @@ public class MemberController {
 		return "main";
 	}
 
-	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})//리스트 조회
 	public String memberList(Model model) {
 		System.out.println("memberList.controller");
 		List<MemberDTO> list = memberService.memberList();
@@ -45,7 +45,7 @@ public class MemberController {
 		return "member/memberList";
 	}	
 	
-	@RequestMapping(value="/insert", method=RequestMethod.GET)
+	@RequestMapping(value="/insert", method=RequestMethod.GET)//회원가입
 	public String memberInsert(HttpSession session) {
 		System.out.println("memberInsert.controller");
 		String memID = (String) session.getAttribute("session");
@@ -57,7 +57,7 @@ public class MemberController {
 		}
 	}	
 	
-	@RequestMapping(value="/join", method=RequestMethod.POST)
+	@RequestMapping(value="/join", method=RequestMethod.POST)//회원가입완료 후 리스트
 	public String memberJoin(@ModelAttribute MemberDTO memberDTO) {
 		System.out.println("memberJoin.controller");
 		memberService.memberInsert(memberDTO);
@@ -110,64 +110,4 @@ public class MemberController {
 			return "/member/memberSelectDetail";			
 		}
 	}
-//		
-//	@RequestMapping(value="/redirect", method=RequestMethod.GET)
-//	public String redirect() {
-//		return "redirect";
-//	}
-//	@RequestMapping(value="/login", method=RequestMethod.POST)
-//	public String memberSearch(MemberDTO member, HttpSession session) {
-//		
-//		MemberDTO m = service.memberSearch(member);
-//		session.setAttribute("session", m);
-//		
-//		return "member/loginOK";
-//	}
-//	
-//	@RequestMapping(value="/logout", method=RequestMethod.GET)
-//	public String memberLogout(MemberDTO member, HttpSession session) {
-//		session.invalidate();
-//		return "member/logoutOK";
-//	}
-//	
-
-//	
-//	@RequestMapping(value="/modify", method=RequestMethod.POST)
-//	public ModelAndView memberModify(MemberDTO member, HttpSession session) {
-//			
-//		MemberDTO members = service.memberModify(member);
-//		
-//		session.setAttribute("session", members);
-//		
-//		ModelAndView mav = new ModelAndView();
-//		
-//		mav.addObject("memINFO", members);
-//		mav.setViewName("member/modifyOK");
-//					
-//		return mav;
-//
-//	}
-//	
-//	@RequestMapping(value="/remove", method=RequestMethod.GET)
-//	public String memberRemove(MemberDTO member, Model model, HttpSession session){
-//		
-//		MemberDTO mem = (MemberDTO) session.getAttribute("session");
-//		
-//		if(mem == null) {
-//			
-//			return "redirect:/member/redirect";
-//			
-//		} else {
-//			
-//			String s = member.getMemID();
-//			model.addAttribute("mem", s);
-//			
-//			session.invalidate();
-//			
-//			service.memberRemove(member);
-//			
-//			return "member/removeOK";
-//			
-//		}
-	
 }

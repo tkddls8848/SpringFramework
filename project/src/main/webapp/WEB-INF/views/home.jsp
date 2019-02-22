@@ -5,19 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JoinOK</title>
-<style type="text/css">
-table {
-	boarder: 1px solid black;
-}
-</style>
+<title>로그인</title>
 </head>
 <body>
+	<h1>로그인</h1>
 
-	<h1>removeOK</h1>
-
-	<P>${mem} is removed.</P><br>
 	
-	<p>${servertime}</p>
 </body>
 </html>

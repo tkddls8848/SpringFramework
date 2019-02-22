@@ -4,14 +4,14 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.kitri.project.login.dao.LoginDao;
+import com.kitri.project.login.dao.LoginDAO;
 import com.kitri.project.member.MemberDTO;
 
 @Service
 public class LoginService implements ILoginService{
 
 	@Inject
-	LoginDao loginDao;
+	LoginDAO loginDao;
 	
 	@Override
 	public String LoginCheck(String memID) {

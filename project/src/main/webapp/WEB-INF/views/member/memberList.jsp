@@ -15,7 +15,7 @@ table {
 <script>
 	$(function() {
 		$("#btnInsert").click(function() {
-			location.href = "/project/member/insert";
+			location.href = "/project/user/memberInsert.do";
 		});
 		$("#btnLogout").click(function() {
 			location.href = "/project/logout.do";

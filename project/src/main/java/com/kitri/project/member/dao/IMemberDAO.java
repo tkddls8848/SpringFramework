@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.kitri.project.member.MemberDTO;
 
-public interface IMemberDao {
+public interface IMemberDAO {
 
 	public MemberDTO memberSelect(String memID);
 	public void memberInsert(MemberDTO memberDTO);

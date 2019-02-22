@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kitri.project.member.MemberDTO;
-import com.kitri.project.member.dao.MemberDao;
+import com.kitri.project.member.dao.MemberDAO;
 
 @Service
 public class MemberService implements IMemberService{
 	
 	@Inject
-	MemberDao memberDao;
+	MemberDAO memberDao;
 
 	@Override
 	public MemberDTO memberSelect(String memID) {

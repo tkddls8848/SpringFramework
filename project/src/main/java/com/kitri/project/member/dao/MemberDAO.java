@@ -14,10 +14,10 @@ import org.springframework.stereotype.Repository;
 import com.kitri.project.member.MemberDTO;
 
 @Repository
-public class MemberDao implements IMemberDao{
+public class MemberDAO implements IMemberDAO{
 	
 	private static final Logger logger = 
-			LoggerFactory.getLogger(MemberDao.class);
+			LoggerFactory.getLogger(MemberDAO.class);
 	
 	@Inject
 	SqlSession sqlSession;
