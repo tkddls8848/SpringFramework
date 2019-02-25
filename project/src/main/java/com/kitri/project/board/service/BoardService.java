@@ -50,20 +50,17 @@ public class BoardService implements IBoardService{
 
 	@Override
 	public BoardDTO selectBoard(int bno) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDAO.selectBoard(bno);
 	}
 
 	@Override
 	public List<BoardDTO> selectAllBoard(int start, int end, String Search_option, String keyword) {
-		
 		return boardDAO.selectAllBoard(start, end, Search_option, keyword);
 	}
 
 	@Override
 	public void insertBoard(BoardDTO dto) {
-		// TODO Auto-generated method stub
-		
+		boardDAO.insertBoard(dto);
 	}
 
 	@Override
@@ -74,8 +71,7 @@ public class BoardService implements IBoardService{
 
 	@Override
 	public void increaseViewCnt(int bno) {
-		// TODO Auto-generated method stub
-		
+		boardDAO.increaseViewCnt(bno);
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 package com.kitri.project.board.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -47,20 +49,25 @@ public class BoardDAO implements IBoardDAO{
 
 	@Override
 	public BoardDTO selectBoard(int bno) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("selectBoard", bno);
 	}
 
 	@Override
-	public List<BoardDTO> selectAllBoard(int start, int end, String Search_option, String keyword) {
+	public List<BoardDTO> selectAllBoard(int start, int end, String search_option, String keyword) {
 		
-		return sqlSession.selectList("boardMapper.selectAll");
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("start", start);
+		map.put("end", end);
+		map.put("search_option", search_option);
+		map.put("keyword", keyword);
+		
+		return sqlSession.selectList("boardMapper.selectAll", map);
 	}
 
 	@Override
 	public void insertBoard(BoardDTO dto) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.insert("boardMapper.insert", dto);		
 	}
 
 	@Override
@@ -71,8 +78,7 @@ public class BoardDAO implements IBoardDAO{
 
 	@Override
 	public void increaseViewCnt(int bno) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.update("boardMapper.increaseViewCnt", bno);
 	}
 
 	@Override

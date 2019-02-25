@@ -1,24 +1,8 @@
-create table member(
-memID varchar2(20) PRIMARY KEY,
-memPW varchar2(20),
-memEMAIL varchar2(20),
-memPHONE1 varchar2(20),
-memPHONE2 varchar2(20),
-memPHONE3 varchar2(20)
-);
-
-select * from member;
-
-insert into member (memID, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3)
-values ('a','a','a@a','1','1','1');
-
-drop table member;
-
 create table board(
 	bno number PRIMARY KEY,
 	title varchar2(50),
 	content varchar2(3000),
-	nickName varchar2(20),
+	memID varchar2(20),
 	regdate date DEFAULT sysdate,
 	viewcnt number DEFAULT 0
 );
@@ -31,13 +15,49 @@ select bno, title, content, regdate, viewcnt
 from board
 order by bno desc;
 
-insert into board (bno, title, content, nickName) 
-values ((select nvl(max (bno)+1,1) from board), 'title', 'content', 'nickName');
+insert into board (bno, title, content, memID) 
+values ((select nvl(max (bno)+1,1) from board), 'title', 'content', 'memID');
 
-update;
+insert into board (bno, title, content, memID) 
+values (seq_board.nextval, 'title', 'content', 'memID');
 
-delete;
+create sequence seq_board
+start with 1
+increment by 1;
+
+declare
+    i number := 1;
+begin
+    while i<= 300 loop
+        insert into board (bno, title, content, memID) 
+        values ((select nvl(max (bno)+1,1) from board), 'title'||i, 'content'||i, 'memID'||i);
+        i := i+1;
+    end loop;
+end;
+
+select * from (
+    select rownum as rn, A.* from(
+        select rownum, bno, title, content,b.regdate, viewcnt, m.memID
+        from board b, member m
+        where b.memID = m.memID
+        order by bno desc, regdate desc
+    ) A
+)where rn between 1 and 200;
 
 commit;
 
 rollback;
+
+		SELECT * FROM (
+		    SELECT rownum as rn, A.* from(
+		        SELECT rownum, bno, title, regdate, viewcnt, m.memID
+		        FROM board b, member m
+				WHERE b.memID = m.memID
+                    and (
+                    m.memID like '%'||''||'%'
+                    or content like '%'||''||'%'
+                    or title like '%'||''||'%'
+                    )
+		        ORDER BY bno desc, regdate desc
+		    ) A
+		) WHERE rn between 1 and 200;
