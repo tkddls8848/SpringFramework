@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,21 +48,10 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/write", method=RequestMethod.GET)
+	@RequestMapping(value="/write", method=RequestMethod.POST)
 	public String boardWrite() {		
 		
 		return "board/boardWrite";
-	}
-	
-	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public String boardInsert(BoardDTO dto, HttpSession session) {		
-		
-		String writer = (String) session.getAttribute("memID");
-		dto.setMemID(writer);
-		
-		boardservice.insertBoard(dto);
-		
-		return "redirect:board/list";
 	}
 	
 }

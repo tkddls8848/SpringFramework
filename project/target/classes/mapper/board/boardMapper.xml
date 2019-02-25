@@ -4,14 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
 
-	<select id="selectAll" resultType="boardDTO">
+	<select id="selectAll" resultType="com.kitri.project.board.BoardDTO">
 		SELECT bno, title, content, regdate, viewcnt
 		FROM board
 		ORDER BY bno desc
 	</select>
 
-	<insert id="insert">
-		insert into board (bno, title, content, memID) 
-values ((seq_board.nextval), #{title}, #{content}, #{memID});
-	</insert>
 </mapper>
