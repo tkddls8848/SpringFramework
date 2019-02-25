@@ -5,14 +5,13 @@
 <mapper namespace="boardMapper">
 
 	<select id="selectAll" resultType="boardDTO">
-		SELECT bno, title, content, memID, regdate, viewcnt 
-		FROM board b, member m
-		WHERE b.memID=m.memID
-		ORDER by bno desc
+		SELECT bno, title, content, regdate, viewcnt
+		FROM board
+		ORDER BY bno desc
 	</select>
 
 	<insert id="insert">
 		insert into board (bno, title, content, memID) 
-		values ((seq_board.nextval), #{title}, #{content}, #{memID});
+values ((seq_board.nextval), #{title}, #{content}, #{memID});
 	</insert>
 </mapper>

@@ -22,7 +22,6 @@ $(function(){
 			<td>bno</td>
 			<td>title</td>
 			<td>content</td>
-			<td>memID</td>
 			<td>regdate</td>
 			<td>viewcnt</td>
 		</tr>
@@ -33,7 +32,6 @@ $(function(){
 			<td>${row.bno}</td>
 			<td>${row.title}</td>
 			<td>${row.content}</td>
-			<td>${row.memID}</td>
 			<td>${row.regdate}</td>
 			<td>${row.viewcnt}</td>
 		</tr>
