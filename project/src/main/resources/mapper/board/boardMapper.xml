@@ -4,41 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardMapper">
 
-	<select id="selectAll"
-		resultType="com.kitri.project.board.BoardDTO">
-		select *
-		from (
-		    select rownum rn, A.*
-		    from (
-		        select rownum, bno, title, content, b.memID, regdate, viewcnt
-		        from board b, member m
-		        <include refid="condition"></include>
-		        order by bno desc
-		    )A
-		)
-		where rn between #{start} and #{end};
+	<select id="selectAll" resultType="boardDTO">
+		SELECT bno, title, content, memID, regdate, viewcnt 
+		FROM board b, member m
+		WHERE b.memID=m.memID
+		ORDER by bno desc
 	</select>
 
 	<insert id="insert">
-		insert into board (bno, title, content, memID)
+		insert into board (bno, title, content, memID) 
 		values ((seq_board.nextval), #{title}, #{content}, #{memID});
 	</insert>
-
-	<sql id="condition">
-		<choose>
-			<when test="search_option =='all'">
-				where b.memID=m.memID and (
-				name like '%'||#{keyword}||'%'
-				or content '%'||#{keyword}||'%'
-				or title '%'||#{keyword}||'%'
-				)
-			</when>
-			<otherwise>
-				where b.memID=m.memID and (
-				${search_option} like '%'||#{keyword}||'%'
-				)
-			</otherwise>
-		</choose>
-	</sql>
-
 </mapper>
