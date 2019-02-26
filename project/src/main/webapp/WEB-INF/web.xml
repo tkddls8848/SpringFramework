@@ -78,7 +78,7 @@
 	</error-page>
 	
 	<session-config>
-		<session-timeout>100</session-timeout>
+		<session-timeout>10</session-timeout>
 	</session-config>
 	
 </web-app>
