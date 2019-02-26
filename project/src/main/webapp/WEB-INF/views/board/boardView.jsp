@@ -7,7 +7,28 @@
 <meta charset="UTF-8">
 <title>BoardWrite</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="../ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+$(function(
+	$(#btnReply).click(function(
+		reply();	
+	));	
+));
+
+function reply(){
+	var replytext=${"#replytext"}.val();
+	var bno="${dto.bno}";
+	var param={"replytext" : replytext, "bno" : bno};
+	$.ajax({
+		type:"post"
+		url:"/project/reply/insert.do"
+		data: param,
+		success:function(){
+			alert("댓글이 등록되었습니다.");
+		}
+	})
+};
+
+</script>
 <style>
 .filedrop{
 	width:600px;
@@ -33,12 +54,6 @@ BoardList
 		내용
 		<textarea name="content" id="content" cols="80" rows="3" placeholder="내용을 입력하세요" readonly>${dto.content}</textarea>
 	</div>
-	<script>
-	CKEDITER.replace("content",{
-		filebrowserUploadUrl: "/board/upload.do",
-		height : "150px"
-	});
-	</script>
 	<div>
 		첨부파일
 		<div class="fileDrop"></div>
@@ -52,6 +67,13 @@ BoardList
 		<a href="/project/board/delete.do"><input type="button" id="btnDelete" value="삭제">세션별 설정</a>
 		<a href="/project/board/list"><input type="button" id="btnList" value="목록"></a>	
 	</div>
-
+	<div style="width:700px; text-align:center">
+		c:if test="${sessionScope.userid != null }"작성요함
+		<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성하세요."></textarea>
+		<br>
+		<input type="button" id="btnReply">댓글쓰기
+		/c:if
+	</div>
+	<div id="listReply"></div>
 </body>
 </html>

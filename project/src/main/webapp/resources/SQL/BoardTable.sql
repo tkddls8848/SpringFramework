@@ -9,8 +9,6 @@ create table board(
 
 drop table board;
 
-select * from board;
-
 select bno, title, content, regdate, viewcnt 
 from board
 order by bno desc;
@@ -47,17 +45,3 @@ select * from (
 commit;
 
 rollback;
-
-		SELECT * FROM (
-		    SELECT rownum as rn, A.* from(
-		        SELECT rownum, bno, title, regdate, viewcnt, m.memID
-		        FROM board b, member m
-				WHERE b.memID = m.memID
-                    and (
-                    m.memID like '%'||''||'%'
-                    or content like '%'||''||'%'
-                    or title like '%'||''||'%'
-                    )
-		        ORDER BY bno desc, regdate desc
-		    ) A
-		) WHERE rn between 1 and 200;
