@@ -17,6 +17,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/include/**" location="/WEB-INF/views/include/" />
+	<resources mapping="/ckeditor/**" location="/WEB-INF/views/ckeditor/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -27,8 +28,14 @@
 	<context:component-scan base-package="com.kitri.project.login.*" />
 	<context:component-scan base-package="com.kitri.project.member.*" />
 	<context:component-scan base-package="com.kitri.project.security.*" />
-
+	<context:component-scan base-package="com.kitri.project.board.*" />
+	
 	<!-- @security어노테이션 활성화  	-->
 	<security:global-method-security secured-annotations="enabled"/>
+
+  	<beans:bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	<beans:property name="maxUploadSize" value="10485760"></beans:property>
+    </beans:bean>
 
 </beans:beans>

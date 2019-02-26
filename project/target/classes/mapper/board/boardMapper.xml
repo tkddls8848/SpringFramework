@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+
+	<select id="selectBoard" resultType="com.kitri.project.board.BoardDTO">
+		SELECT bno, title, content, regdate, viewcnt, m.memID
+		FROM board b, member m
+		WHERE b.memID = m.memID and bno = #{bno}
+	</select>
+
+	<select id="selectAll" resultType="com.kitri.project.board.BoardDTO">
+		SELECT * FROM (
+		    SELECT rownum as rn, A.* from(
+		        SELECT rownum, bno, title, regdate, viewcnt, m.memID
+		        FROM board b, member m
+		     	<include refid="search_option"></include>
+		        ORDER BY bno desc, regdate desc
+		    ) A
+		) WHERE rn between #{start} and #{end}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO board (bno, title, content, nickName) 
+		VALUES (seq_board.nextval, #{title}, #{content}, #{nickName})
+	</insert>
+	
+	<sql id="search_option">
+		<choose>
+			<when test="search_option == 'all'">
+				WHERE b.memID = m.memID
+				and (
+				m.memID like '%'||#{keyword}||'%'
+				or content like '%'||#{keyword}||'%'
+				or title like '%'||#{keyword}||'%'
+				)
+			</when>
+			<otherwise>
+				WHERE b.memID = m.memID
+				and #{search_option} like '%'||#{keyword}||'%'			
+			</otherwise>
+		</choose>
+	</sql>
+		
+	<update id="increaseViewCnt">
+		UPDATE board
+		SET viewcnt = viewcnt + 1
+		WHERE bno = #{bno}
+	</update>
+
+</mapper>
