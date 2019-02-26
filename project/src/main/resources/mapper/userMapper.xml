@@ -6,13 +6,13 @@
 <mapper namespace="user">
 
 	<select id="selectUser" resultType="java.util.Map">
-		SELETE memID as username, passwd as password, name, enabled, authority
-		FROM users
-		WHERE memID = #{memID};
+		SELECT userid as username, passwd as password, name, enabled, authority 
+		FROM users 
+		WHERE userid = #{userid}
 	</select>
 
 	<insert id="insertUser">
-		INSERT INTO users (userid, passwd, name, enabled, authority) 
+		INSERT INTO users
 		VALUES (#{userid}, #{passwd}, #{name}, 1, #{authority})
 	</insert>
  

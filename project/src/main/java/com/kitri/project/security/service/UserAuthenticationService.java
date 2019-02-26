@@ -23,10 +23,7 @@ public class UserAuthenticationService implements UserDetailsService{
 	
 	@Inject
 	private SqlSessionTemplate sqlSession;
-	
-//	@Inject
-//	BCryptPasswordEncoder passwordEncoder;
-	
+
 	public UserAuthenticationService(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}

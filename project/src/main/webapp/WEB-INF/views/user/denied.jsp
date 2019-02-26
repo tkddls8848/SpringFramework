@@ -4,23 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>로그인</title>
+<meta charset="UTF-8" http-equiv="refresh" content="3, /project/user/login.do">
+<title>디나이</title>
 </head>
 <body>
-	<h1>로그인</h1>
-		<form action="/project/login.do">
-			ID : <input type="text" name="memID"><br>
-			PW : <input type="password" name="memPW"><br>
-			<input type="submit" id="btnLogin" value="로그인">
-		</form>
-
-		 메세지가 올 곳입니다.
-		 <c:if test="${message == 'error'}">
-			 <div>아이디 오류</div>
-		 </c:if>
-	
-	<a href="/project/member/insert"><input type="button">회원가입</a>
-	
+		${errMsg}
+		<br>
+		3초후 로그인 페이지로 이동합니다.
 </body>
 </html>
