@@ -178,13 +178,6 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>${security.version}</version>
         </dependency>
-        
-		<!-- secured어노테이션 -->
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>3.2.6</version>
-        </dependency>		
 
 	</dependencies>
 	<build>

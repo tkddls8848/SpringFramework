@@ -10,17 +10,17 @@ public class UserDTO extends User{
 	private String userid;
 	public UserDTO(String username, String password, boolean enabled, boolean accountNonExpired,
 			boolean credentialsNonExpired, boolean accountNonLocked,
-			Collection<? extends GrantedAuthority> authorities, String userid) {
+			Collection<? extends GrantedAuthority> authorities, String memID) {
 		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
-		this.userid=userid;
+		this.userid=memID;
 	}
 
 	public String getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUserid(String memID) {
+		this.userid = memID;
 	}
 
 	@Override

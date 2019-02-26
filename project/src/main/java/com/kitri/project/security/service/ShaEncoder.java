@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ShaEncoder {
-	//passwordencoder bean
+	
 	@Resource(name = "passwordEncoder")
 	private ShaPasswordEncoder encoder;
 	

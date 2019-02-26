@@ -20,20 +20,11 @@ table {
 		$("#btnLogout").click(function() {
 			location.href = "/project/logout.do";
 		});
-		$("#btnAdmin").click(function() {
-			location.href = "/project/admin/admin.do";
-		});
 	});
 </script>
 </head>
 <body>
 	<h1>회원목록</h1>
-	
-	<div id="loginWelcome">
-		${msg}
-	</div>
-		<button id="btnLogout">로그아웃</button>
-		<button id="btnAdmin">관리자페이지</button>		
 	<table>
 		<thead>
 			<tr>
@@ -53,7 +44,10 @@ table {
 		</tbody>
 	</table>
 	<input type="button" value="회원가입" id="btnInsert">
-
+	
+	<div id="loginWelcome">
+		${session}님 반갑습니다.
+	</div>
 	<div>
 		<input type="button" value="로그아웃" id="btnLogout">	
 	</div>

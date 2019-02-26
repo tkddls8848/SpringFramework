@@ -28,7 +28,7 @@
 	<context:component-scan base-package="com.kitri.project.member.*" />
 	<context:component-scan base-package="com.kitri.project.security.*" />
 
-	<!-- @security어노테이션 활성화  	-->
+	<!-- @security어노테이션 활성화  
 	<security:global-method-security secured-annotations="enabled"/>
-
+	-->
 </beans:beans>

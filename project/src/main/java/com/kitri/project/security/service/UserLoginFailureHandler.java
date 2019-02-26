@@ -19,7 +19,7 @@ public class UserLoginFailureHandler implements AuthenticationFailureHandler{
 			AuthenticationException exception) throws IOException, ServletException {
 		
 		request.setAttribute("errMsg", "UserLoginFailureHandler.");
-		request.getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 		
 	}
 

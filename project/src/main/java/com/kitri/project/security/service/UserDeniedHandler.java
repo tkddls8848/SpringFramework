@@ -18,8 +18,8 @@ public class UserDeniedHandler implements AccessDeniedHandler{
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 			
-		request.setAttribute("errMsg", "해당 권한이 없습니다.");
-		request.getRequestDispatcher("/WEB-INF/views/user/denied.jsp").forward(request, response);
+		request.setAttribute("errMsg", "UserDeniedHandler.");
+		request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 		
 	}
 
