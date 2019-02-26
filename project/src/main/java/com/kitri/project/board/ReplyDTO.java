@@ -13,4 +13,6 @@ public class ReplyDTO {
 	private Date updatedate;
 	private String secret_reply;
 	private String writer;
+	
+	
 }

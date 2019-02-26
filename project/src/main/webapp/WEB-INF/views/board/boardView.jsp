@@ -19,15 +19,14 @@ function reply(){
 	var bno="${dto.bno}";
 	var param={"replytext" : replytext, "bno" : bno};
 	$.ajax({
-		type:"post"
-		url:"/project/reply/insert.do"
+		type: "post",
+		url: "/project/reply/insert.do",
 		data: param,
-		success:function(){
+		success: function(){
 			alert("댓글이 등록되었습니다.");
 		}
-	})
-};
-
+	});
+}
 </script>
 <style>
 .filedrop{
