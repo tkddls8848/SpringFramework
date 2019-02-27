@@ -4,7 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
   <select id="memberList" resultType="com.kitri.project.member.MemberDTO">
-    SELECT * FROM member
+	SELECT * 
+	FROM (
+	    SELECT rownum as rn, m.* 
+	    FROM (
+	        SELECT * 
+	        FROM member
+	    ) m
+	)
+	WHERE rn between #{start} and #{end}
   </select>
   
   <select id="memberSelect" resultType="com.kitri.project.member.MemberDTO">
@@ -34,4 +42,16 @@
 		DELETE FROM member
 		WHERE memID = #{memID}
 	</delete>	
+	
+	<select id="memberListMenu" resultType="com.kitri.project.member.MemberDTO">
+		SELECT * FROM (
+		    SELECT rownum as rn, A.* FROM
+			    (
+			        SELECT rownum, memID, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3
+			        FROM member m
+			        ORDER BY rownum desc
+			    ) A
+		) WHERE rn between #{start} and #{end}
+	</select>
+	
 </mapper>

@@ -10,7 +10,9 @@ public interface IMemberService {
 	public void memberInsert(MemberDTO memberDTO);
 	public void memberUpdate(MemberDTO memberDTO);
 	public void memberDelete(MemberDTO memberDTO);
-	public List<MemberDTO> memberList();
+	public List<MemberDTO> memberList(int start, int end);
 	public boolean checkPw(String memID, String memPW);
+	
+	public List<MemberDTO> memberListMenu(int start, int end);
 	
 }

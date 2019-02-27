@@ -43,8 +43,7 @@ public class BoardDAO implements IBoardDAO{
 
 	@Override
 	public void deleteBoard(int bno) {
-		// TODO Auto-generated method stub
-		
+		sqlSession.delete("boardMapper.deleteBoard", bno);
 	}
 
 	@Override
@@ -72,8 +71,13 @@ public class BoardDAO implements IBoardDAO{
 
 	@Override
 	public void updateBoard(BoardDTO dto) {
-		// TODO Auto-generated method stub
 		
+		Map<String, Object> map = new HashMap<>();
+		map.put("bno", dto.getBno());
+		map.put("title", dto.getTitle());
+		map.put("content", dto.getContent());
+		
+		sqlSession.update("boardMapper.updateBoard", map);
 	}
 
 	@Override

@@ -11,14 +11,15 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 <!-- 정적 리소스 보안 제외 -->
 <security:http pattern="/include/**" security="none"></security:http>
+<security:http pattern="/ckeditor/**" security="none"></security:http>
+<security:http pattern="/images/**" security="none"></security:http>
 
-<security:http auto-config="true" use-expressions="true" create-session="never">
+<security:http auto-config="true" use-expressions="true">
 	<!-- 관리자영역-->
 	<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"></security:intercept-url>
-	<!-- 권한관계없는 영역 -->
-	<security:intercept-url pattern="/user/**" access="permitAll"></security:intercept-url>
 	<!-- 일반접근영역 -->
-	<security:intercept-url pattern="/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_GUEST', 'ROLE_TEST')"></security:intercept-url>
+	<security:intercept-url pattern="/" access="permitAll"></security:intercept-url>
+	
 	<!-- 로그인폼 -->
 	<security:form-login login-page="/user/login.do"
 	login-processing-url="/user/login_check.do"	

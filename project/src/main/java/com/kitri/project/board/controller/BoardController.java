@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.security.Principal;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -34,16 +36,6 @@ public class BoardController {
 	
 	@Autowired
 	BoardService boardservice;
-	
-	@ModelAttribute("servertime")
-	public String servertime(Locale locale) {
-
-		DateFormat dateformat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		Date date = new Date();
-
-		return dateformat.format(date);
-		
-	}
 	
 	@RequestMapping(value="/list")
 	public ModelAndView boardList(
@@ -77,9 +69,11 @@ public class BoardController {
 			@RequestParam int bno, 
 			@RequestParam int curPage, 
 			@RequestParam String search_option, 
-			@RequestParam String keyword) {	
+			@RequestParam String keyword,
+			Principal principal) {	
 		
 		boardservice.increaseViewCnt(bno);
+		String userid = principal.getName();
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/board/boardView");
@@ -88,6 +82,7 @@ public class BoardController {
 		mav.addObject("curPage", curPage);
 		mav.addObject("search_option", search_option);
 		mav.addObject("keyword", keyword);
+		mav.addObject("userid", userid);
 		
 		return mav;
 	}
@@ -107,7 +102,7 @@ public class BoardController {
 	@RequestMapping(value="/imageUpload.do", method=RequestMethod.POST)
 	public void boardImageUpload(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam MultipartFile upload) throws IOException {		
-
+		System.out.println("boardImageUpload");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		
@@ -132,4 +127,17 @@ public class BoardController {
 		printwriter.flush();
 		
 	}	
+	
+	@RequestMapping(value="/delete.do", method={RequestMethod.POST, RequestMethod.GET})
+	public String boardDelete(int bno) {		
+		boardservice.deleteBoard(bno);
+		return "redirect:/board/list";
+	}
+	
+	@RequestMapping(value="/update.do", method={RequestMethod.POST, RequestMethod.GET})
+	public String boardUpdate(BoardDTO dto) {		
+		boardservice.updateBoard(dto);
+		return "redirect:/board/list";
+	}
+	
 }

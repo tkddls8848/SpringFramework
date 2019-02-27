@@ -11,7 +11,7 @@ public class BoardDTO {
 	private Date regdate;
 	private int viewcnt;
 	private String memID;
-	private int cnt;
+	private int cnt;//댓글 수
 	private String show;
 	private String[] files;
 	

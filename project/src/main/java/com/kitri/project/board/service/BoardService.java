@@ -44,8 +44,7 @@ public class BoardService implements IBoardService{
 
 	@Override
 	public void deleteBoard(int bno) {
-		// TODO Auto-generated method stub
-		
+		boardDAO.deleteBoard(bno);
 	}
 
 	@Override
@@ -65,8 +64,7 @@ public class BoardService implements IBoardService{
 
 	@Override
 	public void updateBoard(BoardDTO dto) {
-		// TODO Auto-generated method stub
-		
+		boardDAO.updateBoard(dto);
 	}
 
 	@Override

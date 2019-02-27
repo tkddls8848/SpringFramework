@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="../include/header.jsp" %>
 <meta charset="UTF-8">
 <title>회원가입</title>
 </head>

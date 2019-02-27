@@ -6,11 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>BoardList</title>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<%@include file="../include/header.jsp" %>
 <script>
 $(function(){
 	$("#btnWrite").click(function(){
 		location.href="/project/board/write.do";
+	});
+	$("#btnAdmin").click(function() {
+		location.href = "/project/admin/admin.do";
+	});
+	$("#btnMemberlist").click(function() {
+		location.href = "/project/member/list";
 	});
 });
 
@@ -33,8 +39,10 @@ function list(page){
 	${map.pager.curBlock}
 	${map.pager.blockBegin}
 	${map.pager.blockEnd}
-	
+	<button id="btnAdmin">관리자페이지</button>	
+	<button id="btnMemberlist">멤버리스트(관리자예정)</button>		
 	<form name="form" method="get" action="/project/board/list">
+	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
 		<select name="search_option">
 			<option value="all">모두</option>
 			<option value="nickName">이름</option>
@@ -50,6 +58,7 @@ function list(page){
 		<tr>
 			<td>bno</td>
 			<td>title</td>
+			<td>reply</td>
 			<td>regdate</td>
 			<td>viewcnt</td>
 			<td>nickName</td>
@@ -63,6 +72,12 @@ function list(page){
 			+&curPage=${map.pager.curPage}
 			+&search_option=${map.search_option}
 			+&keyword=${map.keyword}">${row.title}</a></td>
+			<td>
+				<span>(${row.cnt})</span>
+				<c:if test="${row.cnt > 0}">
+					<span style="color:red;">(${row.cnt})</span>
+				</c:if>
+			</td>
 			<td>${row.regdate}</td>
 			<td>${row.viewcnt}</td>
 			<td>${row.nickName}</td>

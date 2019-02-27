@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원정보</title>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<%@include file="../include/header.jsp" %>
 <script>
 	$(function() {
 		$("#btnModify").click(function() {

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="../include/header.jsp" %>
 <meta charset="UTF-8">
 <title>회원목록(관리자)</title>
 <style type="text/css">
@@ -11,7 +12,6 @@ table {
 	boarder: 1px solid black;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
 	$(function() {
 		$("#btnInsert").click(function() {

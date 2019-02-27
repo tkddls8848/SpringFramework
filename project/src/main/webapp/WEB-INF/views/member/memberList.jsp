@@ -11,29 +11,31 @@ table {
 	boarder: 1px solid black;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<%@include file="../include/header.jsp" %>
 <script>
 	$(function() {
 		$("#btnInsert").click(function() {
-			location.href = "/project/user/memberInsert.do";
+			location.href = "/project/user/join.do";
 		});
 		$("#btnLogout").click(function() {
 			location.href = "/project/logout.do";
 		});
-		$("#btnAdmin").click(function() {
-			location.href = "/project/admin/admin.do";
-		});
 	});
+//
+//function list(page){
+//	location.href="/project/board/list?curPage="+page
+//			+"&search_option=${map.search_option}"
+//			+"&keyword=${map.keyword}";
+//}
+
+function list(page){
+	location.href="/project/member/list?curPage="+page;
+}
 </script>
 </head>
 <body>
 	<h1>회원목록</h1>
-	
-	<div id="loginWelcome">
-		${msg}
-	</div>
 		<button id="btnLogout">로그아웃</button>
-		<button id="btnAdmin">관리자페이지</button>		
 	<table>
 		<thead>
 			<tr>
@@ -43,6 +45,25 @@ table {
 			</tr>
 		</thead>
 		<tbody>
+<!-- 		
+			<c:forEach var="row" items="${map.list}">
+				<tr>
+					<td>${row.bno}</td>
+					<td><a href="/project/board/view.do?bno=${row.bno}
+					+&curPage=${map.pager.curPage}
+					+&search_option=${map.search_option}
+					+&keyword=${map.keyword}">${row.title}</a></td>
+					<td>
+						<c:if test="${row.cnt > 0}">
+							<span style="color:red;">(${row.cnt})</span>
+						</c:if>
+					</td>
+					<td>${row.regdate}</td>
+					<td>${row.viewcnt}</td>
+					<td>${row.nickName}</td>
+				</tr>
+			</c:forEach>
+ -->			
 			<c:forEach var="row" items="${list}">
 				<tr>
 					<td><a href="/project/member/view?memID=${row.memID}">${row.memID}</a></td>
@@ -50,6 +71,34 @@ table {
 					<td>${row.memPHONE1}-${row.memPHONE2}-${row.memPHONE3}</td>
 				</tr>
 			</c:forEach>
+			
+			<tr>
+				<td>
+					<c:if test="${map.pager.curBlock > 1}">
+						<a href="javascript:list('1')">[처음]</a>
+					</c:if>
+					<c:if test="${map.pager.curBlock > 1}">
+						<a href="javascript:list('${map.pager.prevPage}')">[이전]</a>
+					</c:if>
+					<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
+						<c:choose>
+							<c:when test="${num == map.pager.curPage}">
+								<span style="color:red;">${num}</span>&nbsp;
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:list('${num}')">${num}</a>&nbsp;					
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${map.pager.curBlock <= map.pager.totBlock}">
+						<a href="javascript:list('${map.pager.nextPage}')">[다음]</a>
+					</c:if>
+					<c:if test="${map.pager.curPage <= map.pager.totPage }">
+						<a href="javascript:list('${map.pager.totPage}')">[끝]</a>
+					</c:if>
+				</td>
+			</tr>		
+			
 		</tbody>
 	</table>
 	<input type="button" value="회원가입" id="btnInsert">

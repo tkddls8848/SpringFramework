@@ -13,7 +13,8 @@
 	<select id="selectAll" resultType="com.kitri.project.board.BoardDTO">
 		SELECT * FROM (
 		    SELECT rownum as rn, A.* from(
-		        SELECT rownum, bno, title, regdate, viewcnt, m.memID
+		        SELECT rownum, bno, title, regdate, viewcnt, m.memID, 
+					(SELECT count(*) FROM reply WHERE bno = b.bno) as cnt
 		        FROM board b, member m
 		     	<include refid="search_option"></include>
 		        ORDER BY bno desc, regdate desc
@@ -22,8 +23,8 @@
 	</select>
 
 	<insert id="insert">
-		INSERT INTO board (bno, title, content, nickName) 
-		VALUES (seq_board.nextval, #{title}, #{content}, #{nickName})
+		INSERT INTO board (bno, title, content, memID) 
+		VALUES (seq_board.nextval, #{title}, #{content}, #{memID})
 	</insert>
 	
 	<sql id="search_option">
@@ -49,4 +50,13 @@
 		WHERE bno = #{bno}
 	</update>
 
+	<update id="updateBoard">
+		UPDATE board
+		SET title = #{map.title}, content = #{map.content} 
+		WHERE bno = #{map.bno}
+	</update>
+
+	<delete id="deleteBoard">
+		DELETE FROM board WHERE bno=#{bno}
+	</delete>
 </mapper>

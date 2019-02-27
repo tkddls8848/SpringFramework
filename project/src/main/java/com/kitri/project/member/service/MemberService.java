@@ -14,37 +14,42 @@ import com.kitri.project.member.dao.MemberDAO;
 public class MemberService implements IMemberService{
 	
 	@Inject
-	MemberDAO memberDao;
+	MemberDAO memberDAO;
 
 	@Override
 	public MemberDTO memberSelect(String memID) {
-		MemberDTO memberDTO = memberDao.memberSelect(memID);
+		MemberDTO memberDTO = memberDAO.memberSelect(memID);
 		return memberDTO;
 	}
 
 	@Override
 	public void memberInsert(MemberDTO memberDTO) {
-		memberDao.memberInsert(memberDTO);
+		memberDAO.memberInsert(memberDTO);
 	}
 
 	@Override
 	public void memberUpdate(MemberDTO memberDTO) {
-		memberDao.memberUpdate(memberDTO);
+		memberDAO.memberUpdate(memberDTO);
 	}
 
 	@Override
 	public void memberDelete(MemberDTO memberDTO) {
-		memberDao.memberDelete(memberDTO);
+		memberDAO.memberDelete(memberDTO);
 	}
 
 	@Override
-	public List<MemberDTO> memberList() {
-		return memberDao.memberList();
+	public List<MemberDTO> memberList(int start, int end) {
+		return memberDAO.memberList(start, end);
 	}
 
 	@Override
 	public boolean checkPw(String memID, String memPW) {
-		return memberDao.checkPw(memID, memPW);
+		return memberDAO.checkPw(memID, memPW);
+	}
+
+	@Override
+	public List<MemberDTO> memberListMenu(int start, int end) {
+		return memberDAO.memberListMenu(start, end);
 	}
 
 

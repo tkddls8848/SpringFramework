@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="reply">
+	<insert id="insertReply" parameterType="com.kitri.project.board.ReplyDTO">
+		INSERT INTO reply (rno, bno, replytext, memID) 
+		VALUES (reply_seq.nextval(), #{bno}, #{replytext}, #{memID})
+	</insert>
+	
+	<select id="count" resultType="int">
+		SELECT count(*) 
+		FROM reply 
+		WHERE bno=#{bno}
+	</select>
+	
+	<select id="listReply" resultType="com.kitri.project.board.ReplyDTO">
+		SELECT * 
+		FROM (
+			SELECT rownum as rn, A.*
+			FROM (
+                    SELECT rno, bno, replytext, m.memID, r.regdate, r.updatedate,
+                        (SELECT memID FROM board WHERE bno = r.bno) as writer
+                    FROM reply r, member m
+                    WHERE r.memID=m.memID and bno = #{bno}
+                    ORDER BY rno desc
+                    ) A 
+                )
+	</select>
+	
+<!-- 	
+	<sql id="paging_header">
+		SELECT * 
+		FROM (
+			SELECT rownum as rn, A.*
+			FROM (
+	</sql>
+ 
+	<sql id="paging_footer">
+			) A
+		) WHERE rn BETWEEN #{start} and #{end}
+	</sql>
+	-->	
+</mapper>

@@ -23,9 +23,14 @@ public class MemberDAO implements IMemberDAO{
 	SqlSession sqlSession;
 
 	@Override
-	public List<MemberDTO> memberList() {
+	public List<MemberDTO> memberList(int start, int end) {
 		logger.info("memberList");
-		List<MemberDTO> list = sqlSession.selectList("member.memberList");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);	
+		
+		List<MemberDTO> list = sqlSession.selectList("member.memberList", map);
 		return list;
 	}
 
@@ -67,5 +72,13 @@ public class MemberDAO implements IMemberDAO{
 		return check;
 	}
 
-
+	@Override
+	public List<MemberDTO> memberListMenu(int start, int end) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);		
+		
+		return sqlSession.selectList("member.memberListMenu", map);
+	}
 }

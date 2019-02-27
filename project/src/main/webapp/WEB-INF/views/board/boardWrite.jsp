@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- _csrf_ajax 헤더 -->
+<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
+<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 <title>BoardWrite</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="../ckeditor/ckeditor.js"></script>
@@ -16,6 +19,7 @@ BoardWrite
 <%=application.getRealPath("/") %> + \WEB-INF\views\images\
 <hr>
 		<div>
+		<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
 		<textarea name="content" id="content" cols="80" rows="3" placeholder="내용을 입력하세요"></textarea>
 			<script>
 				CKEDITOR.replace("content", {
@@ -26,9 +30,10 @@ BoardWrite
 		
 		
 <form action="/project/board/insert.do" method="POST">
+			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
 	<div>
 		글쓴이는 세션에 아이디
-		<input type="text" name="memID" id="memID" placeholder="제목을 입력하세요">
+		<input type="text" name="memID" id="memID" placeholder="아이디를 입력하세요">
 	</div>
 	<div>
 		제목
@@ -36,7 +41,7 @@ BoardWrite
 	</div>
 	<div>
 		내용
-
+		<textarea type="text" name="content" id="content" placeholder="나용을 입력하세요"></textarea>
 	</div>
 	<div>
 		첨부파일

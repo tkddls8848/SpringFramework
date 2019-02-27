@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="../include/header.jsp" %>
 <meta charset="UTF-8" http-equiv="refresh" content="3, /project/user/login.do">
 <title>디나이</title>
 </head>
