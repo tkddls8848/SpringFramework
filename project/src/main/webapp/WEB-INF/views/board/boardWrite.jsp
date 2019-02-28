@@ -11,10 +11,13 @@
 <title>BoardWrite</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="../ckeditor/ckeditor.js"></script>
+
 </head>
 <body>
 BoardWrite
 <hr>
+
+<!--  
 배포디렉토리
 <%=application.getRealPath("/") %> + \WEB-INF\views\images\
 <hr>
@@ -23,11 +26,11 @@ BoardWrite
 		<textarea name="content" id="content" cols="80" rows="3" placeholder="내용을 입력하세요"></textarea>
 			<script>
 				CKEDITOR.replace("content", {
-					filebrowserUploadUrl : "/project/board/imageUpload.do"
+					filebrowserUploadUrl : "/project/board/imageUpload.do?${_csrf.parameterName}=${_csrf.token}"
 				});
 			</script>
 		</div>
-		
+-->
 		
 <form action="/project/board/insert.do" method="POST">
 			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">

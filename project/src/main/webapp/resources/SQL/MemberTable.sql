@@ -6,6 +6,7 @@ enabled number(1) default 1,
 authority varchar2(20) default 'ROLE_USER'
 );
 
+
 --spring security
 
 create table member(

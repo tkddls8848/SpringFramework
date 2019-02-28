@@ -1,6 +1,6 @@
 package com.kitri.project.member;
 
-public class MemberDTO {
+public class MemberDTO{
 	
 	private String memID;
 	private String memPW;

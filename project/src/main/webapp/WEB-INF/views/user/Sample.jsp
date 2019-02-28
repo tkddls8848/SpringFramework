@@ -1,119 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<%@include file="../include/header.jsp" %>
-<!--구글 맵 API, key 발급-->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyASO-TtcmYDX1eNZRtTawpGPIa_te-uhN8&language=ko"></script>
-<script> 
-window.onload = function () {
-	var myLatlng = new google.maps.LatLng(37.51619821, 127.1041016); // y, x좌표값 : 여기에 주소자료롤 받아 입력해야 함.
-	var mapOptions = { 
-	      zoom: 15, 
-	      center: myLatlng, 
-	      mapTypeId: google.maps.MapTypeId.ROADMAP 
-	} 
-	
-	var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-	var marker = new google.maps.Marker({ 
-	          position: myLatlng, 
-	          map: map, 
-	          title: "회사이름" 
-	}); 
-	var infowindow = new google.maps.InfoWindow( 
-	        { 
-	          content: "<h1>회사이름</h1>", 
-	          maxWidth: 300 
-	        } 
-	); 
-	google.maps.event.addListener(marker, 'click', function() { 
-		infowindow.open(map, marker); 
-	}); 
-}
-</script>
-
-<script type="text/javascript">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript">
 
 function goPopup(){
-	
-	
-	// 좌표검색가이드를 이요한 ajax와 csrf토큰
-	
-	
 	// 주소검색을 수행할 팝업 페이지를 호출합니다.
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrCoordUrl.do)를 호출하게 됩니다.
-	var pop = window.open("${path}/user/jusoPopup.do?${_csrf.parameterName}=${_csrf.token}","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 }
 
 
 function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo,entX,entY){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-		document.form_juso.roadFullAddr.value = roadFullAddr;
-		document.form_juso.roadAddrPart1.value = roadAddrPart1;
-		document.form_juso.roadAddrPart2.value = roadAddrPart2;
-		document.form_juso.addrDetail.value = addrDetail;
-		document.form_juso.engAddr.value = engAddr;
-		document.form_juso.jibunAddr.value = jibunAddr;
-		document.form_juso.zipNo.value = zipNo;
-		document.form_juso.admCd.value = admCd;
-		document.form_juso.rnMgtSn.value = rnMgtSn;
-		document.form_juso.bdMgtSn.value = bdMgtSn;
-		document.form_juso.detBdNmList.value = detBdNmList;
-		document.form_juso.bdNm.value = bdNm;
-		document.form_juso.bdKdcd.value = bdKdcd;
-		document.form_juso.siNm.value = siNm;
-		document.form_juso.sggNm.value = sggNm;
-		document.form_juso.emdNm.value = emdNm;
-		document.form_juso.liNm.value = liNm;
-		document.form_juso.rn.value = rn;
-		document.form_juso.udrtYn.value = udrtYn;
-		document.form_juso.buldMnnm.value = buldMnnm;
-		document.form_juso.buldSlno.value = buldSlno;
-		document.form_juso.mtYn.value = mtYn;
-		document.form_juso.lnbrMnnm.value = lnbrMnnm;
-		document.form_juso.lnbrSlno.value = lnbrSlno;
-		document.form_juso.emdNo.value = emdNo;
-		document.form_juso.entX.value = entX;
-		document.form_juso.entY.value = entY;
+		document.form.roadFullAddr.value = roadFullAddr;
+		document.form.roadAddrPart1.value = roadAddrPart1;
+		document.form.roadAddrPart2.value = roadAddrPart2;
+		document.form.addrDetail.value = addrDetail;
+		document.form.engAddr.value = engAddr;
+		document.form.jibunAddr.value = jibunAddr;
+		document.form.zipNo.value = zipNo;
+		document.form.admCd.value = admCd;
+		document.form.rnMgtSn.value = rnMgtSn;
+		document.form.bdMgtSn.value = bdMgtSn;
+		document.form.detBdNmList.value = detBdNmList;
+		document.form.bdNm.value = bdNm;
+		document.form.bdKdcd.value = bdKdcd;
+		document.form.siNm.value = siNm;
+		document.form.sggNm.value = sggNm;
+		document.form.emdNm.value = emdNm;
+		document.form.liNm.value = liNm;
+		document.form.rn.value = rn;
+		document.form.udrtYn.value = udrtYn;
+		document.form.buldMnnm.value = buldMnnm;
+		document.form.buldSlno.value = buldSlno;
+		document.form.mtYn.value = mtYn;
+		document.form.lnbrMnnm.value = lnbrMnnm;
+		document.form.lnbrSlno.value = lnbrSlno;
+		document.form.emdNo.value = emdNo;
+		document.form.entX.value = entX;
+		document.form.entY.value = entY;
 		
 		
 }
+
 </script>
-<meta charset="UTF-8">
-<title>회원가입</title>
+<title>주소 입력 샘플</title>
 </head>
 <body>
-	<form name="form" action="/project/user/insertUser.do" method="post">
-			ID : <input type="text" name="userid"><br>
-			PW : <input type="password" name="passwd"><br>
-			이름 : <input type="text" name="name"><br>
-			사용권한
-			<select name="authority">
-				<option value="ROLE_USER">ROLE_USER</option>
-				<option value="ROLE_ADMIN">ROLE_ADMIN</option>
-			</select>		 
-		<input type="submit" value="회원가입"><br>
-		<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
-	</form>
-	
-	<form name="form1" action="/project/member/join" method="post">
-			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
-			E-MAIL : <input type="email" name="memEMAIL"><br>
-			PHONE : <select name="memPHONE1">
-					<option value="010">010</option>
-					<option value="011">011</option>
-					<option value="012">012</option>
-					</select>
-						 - <input type="text" name="memPHONE2" placeholder="4" size="4">
-						 - <input type="text" name="memPHONE3" placeholder="4" size="4">
-	<input type="submit" value="회원가입"><br>
-	</form>
-		<div id="map_canvas" align="center" style="height:300px; width:300px;">
-		</div>
-
-<form name="form_juso" id="form_juso" method="post">
+<form name="form" id="form" method="post">
 
 	<input type="button" onClick="goPopup();" value="팝업_domainChk"/>
 	<div id="list"></div>
@@ -150,7 +87,5 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 	</div>
 
 </form>
-		
-		
 </body>
 </html>

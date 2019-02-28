@@ -67,4 +67,9 @@ public class UserController {
 	public String Logout() {
 		return "/user/login";
 	}	
+	
+	@RequestMapping(value = "/user/jusoPopup.do")//주소 팝업창
+	public String jusoPopup() {
+		return "/user/jusoPopup";		
+	}
 }
