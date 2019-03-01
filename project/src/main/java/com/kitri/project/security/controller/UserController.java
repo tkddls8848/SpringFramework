@@ -6,12 +6,14 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kitri.project.security.dao.UserDAO;
 import com.kitri.project.security.service.ShaEncoder;
@@ -68,7 +70,7 @@ public class UserController {
 		return "/user/login";
 	}	
 	
-	@RequestMapping(value = "/user/jusoPopup.do")//주소 팝업창
+	@RequestMapping(value = "/user/jusoPopup.do", method=RequestMethod.GET)//주소 팝업창
 	public String jusoPopup() {
 		return "/user/jusoPopup";		
 	}

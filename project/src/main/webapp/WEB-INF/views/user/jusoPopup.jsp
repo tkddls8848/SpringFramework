@@ -44,12 +44,13 @@ function init(){
 	var resultType = "4"; // 도로명주소 검색결과 화면 출력내용, 1 : 도로명, 2 : 도로명+지번, 3 : 도로명+상세건물명, 4 : 도로명+지번+상세건물명
 	var inputYn= "<%=inputYn%>";
 	if(inputYn != "Y"){
-		document.form.confmKey.value = confmKey;
+		document.form.confmKey.value = "U01TX0FVVEgyMDE5MDMwMTIwMTgxMTEwODU1MjA=";
 		document.form.returnUrl.value = url;
 		document.form.resultType.value = resultType;
-		document.form.action="http://www.juso.go.kr/addrlink/addrCoordUrl.do?${_csrf.parameterName}=${_csrf.token}"; //인터넷망
+		document.form.action="http://www.juso.go.kr/addrlink/addrCoordUrl.do"; //인터넷망
 		document.form.submit();
 	}else{
+		alert("roadFullAddr");
 		opener.jusoCallBack("<%=roadFullAddr%>","<%=roadAddrPart1%>","<%=addrDetail%>","<%=roadAddrPart2%>","<%=engAddr%>","<%=jibunAddr%>","<%=zipNo%>", "<%=admCd%>", "<%=rnMgtSn%>", "<%=bdMgtSn%>", "<%=detBdNmList%>", "<%=bdNm%>", "<%=bdKdcd%>", "<%=siNm%>", "<%=sggNm%>", "<%=emdNm%>", "<%=liNm%>", "<%=rn%>", "<%=udrtYn%>", "<%=buldMnnm%>", "<%=buldSlno%>", "<%=mtYn%>", "<%=lnbrMnnm%>", "<%=lnbrSlno%>", "<%=emdNo%>", "<%=entX%>", "<%=entY%>");
 		window.close();
 		}
@@ -60,11 +61,6 @@ function init(){
 		<input type="hidden" id="confmKey" name="confmKey" value=""/>
 		<input type="hidden" id="returnUrl" name="returnUrl" value=""/>
 		<input type="hidden" id="resultType" name="resultType" value=""/>
-		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 START-->
-		<!-- 
-		<input type="hidden" id="encodingType" name="encodingType" value="EUC-KR"/>
-		 -->
-		<!-- 해당시스템의 인코딩타입이 EUC-KR일경우에만 추가 END-->
 	</form>
 </body>
 </html>

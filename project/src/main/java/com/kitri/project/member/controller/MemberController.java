@@ -1,20 +1,12 @@
 package com.kitri.project.member.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kitri.project.board.BoardDTO;
 import com.kitri.project.board.service.page.Pager;
 import com.kitri.project.member.MemberDTO;
-import com.kitri.project.member.dao.MemberDAO;
 import com.kitri.project.member.service.MemberService;
 
 @Controller
@@ -40,13 +30,6 @@ public class MemberController {
 	public String main() {
 		return "main";
 	}
-//	@RequestMapping(value="/list")//리스트 조회
-//	public String memberList(Model model) {
-//		System.out.println("memberList.controller");
-//		List<MemberDTO> list = memberService.memberList();
-//		model.addAttribute("list", list);
-//		return "member/memberList";
-//	}	
 	
 	@RequestMapping(value="/list")//리스트 조회
 	public ModelAndView memberList(@RequestParam(defaultValue = "1") int curPage) {
@@ -72,31 +55,7 @@ public class MemberController {
 		
 		return mav;
 	}	
-//	public ModelAndView boardList(
-//	
-//			@RequestParam(defaultValue = "all") String search_option, 
-//			@RequestParam(defaultValue = "") String keyword) {		
-//		
-//		int count = 200;
-//		Pager pager = new Pager(count, curPage);
-//		
-//		int start = pager.getPageBegin();
-//		int end = pager.getPageEnd();
-//		
-//		List<BoardDTO> list = boardservice.selectAllBoard(start, end, search_option, keyword);
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("list", list);
-//		map.put("count", count);
-//		map.put("search_option", search_option);
-//		map.put("keyword", keyword);
-//		map.put("pager", pager);
-//		
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("map", map);
-//		mav.setViewName("board/boardList");
-//		
-//		return mav;
-//	}	
+
 	@RequestMapping(value="/insert", method=RequestMethod.GET)//회원가입
 	public String memberInsert(HttpSession session) {
 		System.out.println("memberInsert.controller");
