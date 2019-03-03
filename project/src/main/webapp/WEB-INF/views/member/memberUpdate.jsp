@@ -49,6 +49,9 @@ $(function() {
 		</div>
 		 <button id="btnComplete">수정완료</button>
 		 <button id="btnList">리스트로</button>
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>
 </form>
 </body>
 </html>

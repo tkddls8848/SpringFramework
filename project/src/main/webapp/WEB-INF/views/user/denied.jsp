@@ -13,5 +13,8 @@
 		${roadFullAddr}
 		<br>
 		3초후 로그인 페이지로 이동합니다.
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>
 </body>
 </html>

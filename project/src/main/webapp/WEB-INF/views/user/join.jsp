@@ -53,5 +53,8 @@ window.onload = function () {
 <div id="map_canvas" align="center" style="height:300px; width:300px;">
 </div>
 -->
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>
 </body>
 </html>

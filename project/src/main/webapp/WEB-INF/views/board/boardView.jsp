@@ -87,5 +87,8 @@ function listReply(){
 	
 	<div id="listReply"></div> 
 	-->
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>
 </body>
 </html>

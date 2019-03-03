@@ -52,5 +52,8 @@
 		 <button id="btnDelete">삭제</button>
 		 <div>${message}</div>
 </form>
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>
 </body>
 </html>

@@ -53,7 +53,9 @@ table {
 	<div>
 		<input type="button" value="로그아웃" id="btnLogout">	
 	</div>
-
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>
 		
 </body>
 </html>

@@ -95,6 +95,8 @@ function list(page){
 	<input type="button" class="btn btn-secondary" value="로그아웃" id="btnLogout">	
 </div>
 
-		
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>		
 </body>
 </html>

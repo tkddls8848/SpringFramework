@@ -125,6 +125,8 @@ function list(page){
 	</table>
 	</div>
 	<input type="button" class="btn btn-primary" value="글쓰기" id="btnWrite">
-
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>
 </body>
 </html>

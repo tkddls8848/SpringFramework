@@ -22,5 +22,8 @@
 			 - <input type="text" name="memPHONE3" placeholder="4" size="4">
 	<input type="submit" value="회원가입"><br>
 	</form>
+	<div>
+		<%@ include file="../include/footer.jsp" %>	
+	</div>
 </body>
 </html>
