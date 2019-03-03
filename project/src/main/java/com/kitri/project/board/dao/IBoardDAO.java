@@ -17,6 +17,7 @@ public interface IBoardDAO {
 	public void insertBoard(BoardDTO dto);
 	public void updateBoard(BoardDTO dto);	
 	
+	public int boardTotalCount();
 	public void increaseViewCnt(int bno);
 	public int searchBoard(String search_option, String keyword);
 }

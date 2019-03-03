@@ -2,18 +2,18 @@ package com.kitri.project.member;
 
 public class MemberDTO{
 	
-	private String memID;
+	private String userid;
 	private String memPW;
 	private String memEMAIL;
 	private String memPHONE1;
 	private String memPHONE2;
 	private String memPHONE3;
 	
-	public String getMemID() {
-		return memID;
+	public String getUserid() {
+		return userid;
 	}
-	public void setMemID(String id) {
-		this.memID = id;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getMemPW() {
 		return memPW;

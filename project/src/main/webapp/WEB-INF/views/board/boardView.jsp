@@ -4,106 +4,88 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="../include/header.jsp" %>
 <meta charset="UTF-8">
-<!-- _csrf_ajax 헤더 -->
-<meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
-<meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
-
-<title>BoardWrite</title>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<title>BoardView</title>
 <script>
 $(function(){
-	listReply("1");//1페이지 댓글 목록 뿌리기
 	$("#btnReply").click(function(){
-		reply();
-	});
-});
-
-function reply(){
-	var replytext=$("#replytext").val();
-	var bno="${dto.bno}";
-	var param={"replytext" : replytext, "bno" : bno};
+		var replytext = $("#replytext").val();
+		var bno = ${dto.bno};
+		var param = {"replytext" : replytext, "bno" : bno};
+		$.ajax({
+			type : "POST",
+			url : "/project/reply/insert.do",
+			data : param,
+			beforeSend : function(xhr){  
+			    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+			},
+			success : function(){
+				alert("댓글");
+			}
+		});
+	})
+})
+function listReply(){
 	$.ajax({
-		type: "post",
-		url: "/project/reply/insert.do",
-		data: param,
-		beforeSend : function(xhr)
-        {  
-            xhr.setRequestHeader("${_csrf_header}", "${_csrf}");
-        },
-		success: function(){
-			alert("댓글이 등록되었습니다.");
-			listReply("1");//댓글 갱신 후 목록 다시 뿌리기
-		}
-	});
-}
-
-
-function listReply(num){
-	$.ajax({
-		type: "post",
-		url: "/project/reply/list.do?bno=${dto.bno}&curPage=" + num,
-		beforeSend : function(xhr)
-        {  
-            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-        },
-		success: function(result){
-			alert(result);
+		type : "get",
+		url : "${path}/reply/list.do?bno=${dto.bno}",
+		success : function(result){
 			$("#listReply").html(result);
 		}
 	});
 }
 
 </script>
-<style>
-.filedrop{
-	width:600px;
-	height:100px;
-	boarder:1px dotted gray;
-	background-color:gray;
-}
-</style>
 </head>
 <body>
-BoardList
-		${userid}
-<hr>
-	<div>
-		${dto.memID}
-	</div>
-	<div>
-		제목
-		<input type="text" name="title" id="title" value="${dto.title}" readonly>
-	</div>
-	<div>
-		내용
-		<textarea name="content" id="content" cols="80" rows="3" readonly>${dto.content}</textarea>
-	</div>
-	<div>
-		첨부파일
-		<div class="fileDrop"></div>
-		<div id="uploadedList"></div>
-	</div>
-	<div>
-		<input type="submit" id="btnSave">
-		<a href="/project/board/list"><input type="button" id="btnList" value="목록"></a>	
-	</div>
-	<hr>
+<h3>게시글 보기</h3>
+사용자명 : ${userid}
+<br>
+	<form action="/project/board/update.do">
+	<input type="hidden" id="bno" name="bno" value="${dto.bno}">
+	    <div class="table-responsive">
+			<table class="table table-striped">
+				<tr>
+					<td>글번호</td>
+					<td>${dto.bno}</td>
+				</tr>
+				<tr>
+					<td>작성자명</td>
+					<td>${userid}</td>
+				</tr>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="title" id="title" value="${dto.title}"></td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td><textarea name="content" id="content" cols="80" rows="3">${dto.content}</textarea></td>
+				</tr>
+			</table>
+			<input type="submit" id="btnUpdate" class="btn btn-primary" value="수정">
+			<a href="/project/board/list"><input type="button" class="btn btn-secondary" id="btnList" value="목록"></a>
+		</div>	
+	</form>	
+	<form action="/project/board/delete.do">
+		<input type="hidden" id="bno" name="bno" value="${dto.bno}">
+		<input type="submit" id="btnDelete" class="btn btn-danger pull-right" value="삭제">
+	</form>
+
+<!-- 
 	<div style="width:700px; text-align:center">
-		<c:if test="${userid != null}">
+
 		<form action="/project/reply/insert.do" method="post">
 			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
 			<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성하세요.ajax미구현상태"></textarea>
 			<br>
-			<input type="button" id="btnReply" value="댓글쓰기(ajax)">
+			<input type="submit" id="btnReply" value="댓글쓰기(ajax)">
 			<input type="hidden" id="bno" name="bno" value="${dto.bno}">
 		</form>
-			<a href="/project/board/write.do"><input type="button" id="btnWrite" value="수정"></a>
-			<a href="/project/board/delete.do"><input type="button" id="btnDelete" value="삭제"></a>
-			<a href="/project/board/list"><input type="button" id="btnList" value="목록"></a>
-		</c:if>
+		
 	</div>
 	
-	<div id="listReply"></div>
+	<div id="listReply"></div> 
+	-->
 </body>
 </html>

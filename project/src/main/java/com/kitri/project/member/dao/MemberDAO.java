@@ -35,9 +35,9 @@ public class MemberDAO implements IMemberDAO{
 	}
 
 	@Override
-	public MemberDTO memberSelect(String memID) {
+	public MemberDTO memberSelect(String userid) {
 		logger.info("memberSelect");
-		MemberDTO memberDTO = sqlSession.selectOne("member.memberSelect", memID);
+		MemberDTO memberDTO = sqlSession.selectOne("member.memberSelect", userid);
 		return memberDTO;
 	}
 	
@@ -60,16 +60,10 @@ public class MemberDAO implements IMemberDAO{
 	}
 
 	@Override
-	public boolean checkPw(String memID, String memPW) {
+	public boolean checkPw(String userid, String memPW) {
 		logger.info("checkPw");
-		boolean check = false;
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("memPW", memPW);
-		int count = sqlSession.selectOne("member.checkPw", map);
-		if(count == 1) {
-			check = true;
-		}
-		return check;
+
+		return true;
 	}
 
 	@Override
@@ -80,5 +74,10 @@ public class MemberDAO implements IMemberDAO{
 		map.put("end", end);		
 		
 		return sqlSession.selectList("member.memberListMenu", map);
+	}
+
+	@Override
+	public int memberTotalCount() {
+		return sqlSession.selectOne("member.memberTotalCount");
 	}
 }

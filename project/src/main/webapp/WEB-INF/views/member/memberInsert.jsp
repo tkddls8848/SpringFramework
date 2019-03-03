@@ -10,8 +10,8 @@
 </head>
 <body>
 	<form name="form" action="/project/member/join" method="post">
-			ID : <input type="text" name="memID"><br>
-			PW : <input type="password" name="memPW"><br>
+	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+			ID : <input type="text" name="userid"><br>
 			E-MAIL : <input type="email" name="memEMAIL"><br>
 			PHONE : <select name="memPHONE1">
 			<option value="010">010</option>

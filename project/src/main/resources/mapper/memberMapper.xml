@@ -18,7 +18,7 @@
   <select id="memberSelect" resultType="com.kitri.project.member.MemberDTO">
     SELECT * 
     FROM member 
-    WHERE memID = #{memID}
+    WHERE userid = #{userid}
   </select>
 
   <select id="checkPw" resultType="int">
@@ -28,30 +28,34 @@
   </select>
    
   <insert id="memberInsert" parameterType="com.kitri.project.member.MemberDTO">
-	INSERT INTO member (memID, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3) 
-	VALUES (#{memID}, #{memPW}, #{memEMAIL}, #{memPHONE1}, #{memPHONE2}, #{memPHONE3})
+	INSERT INTO member (userid, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3) 
+	VALUES (#{userid}, #{memPW}, #{memEMAIL}, #{memPHONE1}, #{memPHONE2}, #{memPHONE3})
   </insert>
  
 	<update id="memberUpdate" parameterType="com.kitri.project.member.MemberDTO">
 		UPDATE member
-		SET memID = #{memID}, memPW = #{memPW}, memEMAIL = #{memEMAIL}, memPHONE1 = #{memPHONE1}, memPHONE2 = #{memPHONE2}, memPHONE3 = #{memPHONE3}
-		WHERE memID = #{memID}
+		SET userid = #{userid}, memEMAIL = #{memEMAIL}, memPHONE1 = #{memPHONE1}, memPHONE2 = #{memPHONE2}, memPHONE3 = #{memPHONE3}
+		WHERE userid = #{userid}
 	</update>
 		
 	<delete id="memberDelete">
 		DELETE FROM member
-		WHERE memID = #{memID}
+		WHERE userid = #{userid}
 	</delete>	
 	
 	<select id="memberListMenu" resultType="com.kitri.project.member.MemberDTO">
 		SELECT * FROM (
 		    SELECT rownum as rn, A.* FROM
 			    (
-			        SELECT rownum, memID, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3
+			        SELECT rownum, userid, memPW, memEMAIL, memPHONE1, memPHONE2, memPHONE3
 			        FROM member m
 			        ORDER BY rownum desc
 			    ) A
 		) WHERE rn between #{start} and #{end}
+		
 	</select>
-	
+		<select id="memberTotalCount" resultType="int">
+		SELECT count(*)
+		FROM member
+	</select>
 </mapper>

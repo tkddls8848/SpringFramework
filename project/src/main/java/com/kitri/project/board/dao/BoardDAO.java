@@ -91,4 +91,9 @@ public class BoardDAO implements IBoardDAO{
 		return 0;
 	}
 
+	@Override
+	public int boardTotalCount() {
+		return sqlSession.selectOne("boardMapper.boardTotalCount");
+	}
+
 }

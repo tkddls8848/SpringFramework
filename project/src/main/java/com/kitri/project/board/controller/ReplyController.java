@@ -7,31 +7,34 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kitri.project.board.ReplyDTO;
 import com.kitri.project.board.service.ReplyService;
 import com.kitri.project.board.service.page.Pager;
 
-@Controller
+@RestController
 @RequestMapping("/reply")
 public class ReplyController {
 	
 	@Inject
 	ReplyService replyservice;
 	
-	@RequestMapping("/insert.do")
+	@RequestMapping(value="/insert.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void insert(ReplyDTO replyDTO, Principal principal) {
 		System.out.println("replyinsert");
-		String memID = principal.getName();
-		replyDTO.setMemID(memID);
+		String userid = principal.getName();
+		System.out.println(userid);
+		replyDTO.setUserid(userid);
 		replyservice.insert(replyDTO);
 	}
 	
-	@RequestMapping("/list.do")
+	@RequestMapping(value="/list.do")
 	@ResponseBody
 	public ModelAndView list(int bno,
 			@RequestParam(defaultValue = "1") int curPage,

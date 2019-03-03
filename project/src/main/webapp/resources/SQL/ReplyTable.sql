@@ -2,7 +2,7 @@ create table reply(
 rno number,
 bno number default 0,
 replytext varchar2(1000),
-memID varchar2(50),--memID
+userid varchar2(50),--memID
 regdate date default sysdate,
 updatedate date default sysdate
 );

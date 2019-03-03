@@ -17,8 +17,8 @@ public class MemberService implements IMemberService{
 	MemberDAO memberDAO;
 
 	@Override
-	public MemberDTO memberSelect(String memID) {
-		MemberDTO memberDTO = memberDAO.memberSelect(memID);
+	public MemberDTO memberSelect(String userid) {
+		MemberDTO memberDTO = memberDAO.memberSelect(userid);
 		return memberDTO;
 	}
 
@@ -43,13 +43,18 @@ public class MemberService implements IMemberService{
 	}
 
 	@Override
-	public boolean checkPw(String memID, String memPW) {
-		return memberDAO.checkPw(memID, memPW);
+	public boolean checkPw(String userid, String memPW) {
+		return memberDAO.checkPw(userid, memPW);
 	}
 
 	@Override
 	public List<MemberDTO> memberListMenu(int start, int end) {
 		return memberDAO.memberListMenu(start, end);
+	}
+
+	@Override
+	public int memberTotalCount() {
+		return memberDAO.memberTotalCount();
 	}
 
 

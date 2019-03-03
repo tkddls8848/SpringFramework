@@ -24,6 +24,7 @@ public class ReplyService implements IReplyService {
 
 	@Override
 	public void insert(ReplyDTO replyDTO) {
+		System.out.println("replydaoinsert");
 		replydao.insert(replyDTO);
 	}
 

@@ -1,11 +1,11 @@
 package com.kitri.project.member.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +35,7 @@ public class MemberController {
 	public ModelAndView memberList(@RequestParam(defaultValue = "1") int curPage) {
 		System.out.println("memberList.controller");
 		
-		int count = 300;
+		int count = memberService.memberTotalCount();
 		Pager pager = new Pager(count, curPage);
 		
 		int start = pager.getPageBegin();
@@ -57,11 +57,11 @@ public class MemberController {
 	}	
 
 	@RequestMapping(value="/insert", method=RequestMethod.GET)//회원가입
-	public String memberInsert(HttpSession session) {
+	public String memberInsert(Principal principal) {
 		System.out.println("memberInsert.controller");
-		String memID = (String) session.getAttribute("session");
+		String userid = ((MemberDTO) principal).getUserid();
 		
-		if(memID == null) {
+		if(userid == null) {
 			return "redirect:/member/list";			
 		} else {
 			return "/member/memberInsert";			
@@ -76,9 +76,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/view", method={RequestMethod.GET, RequestMethod.POST})
-	public String memberSelect(@RequestParam String memID, Model model) {
+	public String memberSelect(@RequestParam String userid, Model model) {
 		System.out.println("memberSelect.controller");
-		MemberDTO memberDTO = memberService.memberSelect(memID);
+		MemberDTO memberDTO = memberService.memberSelect(userid);
 		model.addAttribute("memberDTO", memberDTO);
 		return "/member/memberSelectDetail";
 	}
@@ -86,13 +86,13 @@ public class MemberController {
 	@RequestMapping(value="/modify")
 	public String memberModify(@ModelAttribute MemberDTO memberDTO, Model model) {
 		System.out.println("memberModify.controller");
-		boolean result = memberService.checkPw(memberDTO.getMemID(), memberDTO.getMemPW());
+		boolean result = true;
 		
 		if(result) {
 			memberService.memberUpdate(memberDTO);
 			return "redirect:/member/list";
 		} else {
-			MemberDTO dto = memberService.memberSelect(memberDTO.getMemID());
+			MemberDTO dto = memberService.memberSelect(memberDTO.getUserid());
 			model.addAttribute("memberDTO", dto);
 			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
 			return "/member/memberSelectDetail";			
@@ -109,13 +109,13 @@ public class MemberController {
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public String memberDelete(@ModelAttribute MemberDTO memberDTO, Model model) {
 		System.out.println("memberDelete.controller");
-		boolean result = memberService.checkPw(memberDTO.getMemID(), memberDTO.getMemPW());
+		boolean result = memberService.checkPw(memberDTO.getUserid(), memberDTO.getMemPW());
 		
 		if(result) {	
 			memberService.memberDelete(memberDTO);
 			return "redirect:/member/list";		
 		} else {
-			MemberDTO dto = memberService.memberSelect(memberDTO.getMemID());
+			MemberDTO dto = memberService.memberSelect(memberDTO.getUserid());
 			model.addAttribute("memberDTO", dto);
 			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
 			return "/member/memberSelectDetail";			

@@ -16,7 +16,7 @@
 
 <security:http auto-config="true" use-expressions="true">
 	<!-- 관리자영역-->
-	<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"></security:intercept-url>
+	<security:intercept-url pattern="/member/**" access="hasRole('ROLE_ADMIN')"></security:intercept-url>
 	<!-- 일반접근영역 -->
 	<security:intercept-url pattern="/" access="permitAll"></security:intercept-url>
 	

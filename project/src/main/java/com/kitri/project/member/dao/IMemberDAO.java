@@ -15,5 +15,5 @@ public interface IMemberDAO {
 	public boolean checkPw(String memID, String memPW);
 	
 	public List<MemberDTO> memberListMenu(int start, int end);
-	
+	public int memberTotalCount();
 }

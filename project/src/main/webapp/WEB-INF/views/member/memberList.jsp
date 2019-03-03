@@ -21,12 +21,6 @@ table {
 			location.href = "/project/logout.do";
 		});
 	});
-//
-//function list(page){
-//	location.href="/project/board/list?curPage="+page
-//			+"&search_option=${map.search_option}"
-//			+"&keyword=${map.keyword}";
-//}
 
 function list(page){
 	location.href="/project/member/list?curPage="+page;
@@ -34,9 +28,9 @@ function list(page){
 </script>
 </head>
 <body>
-	<h1>회원목록</h1>
-		<button id="btnLogout">로그아웃</button>
-	<table>
+	<h1>회원목록(관리자 전용)</h1>
+<div class="table-responsive">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<td>아이디</td>
@@ -45,67 +39,61 @@ function list(page){
 			</tr>
 		</thead>
 		<tbody>
-<!-- 		
-			<c:forEach var="row" items="${map.list}">
-				<tr>
-					<td>${row.bno}</td>
-					<td><a href="/project/board/view.do?bno=${row.bno}
-					+&curPage=${map.pager.curPage}
-					+&search_option=${map.search_option}
-					+&keyword=${map.keyword}">${row.title}</a></td>
-					<td>
-						<c:if test="${row.cnt > 0}">
-							<span style="color:red;">(${row.cnt})</span>
-						</c:if>
-					</td>
-					<td>${row.regdate}</td>
-					<td>${row.viewcnt}</td>
-					<td>${row.nickName}</td>
-				</tr>
-			</c:forEach>
- -->			
 			<c:forEach var="row" items="${list}">
 				<tr>
-					<td><a href="/project/member/view?memID=${row.memID}">${row.memID}</a></td>
+					<td><a href="/project/member/view?userid=${row.userid}">${row.userid}</a></td>
 					<td>${row.memEMAIL}</td>
 					<td>${row.memPHONE1}-${row.memPHONE2}-${row.memPHONE3}</td>
 				</tr>
 			</c:forEach>
-			
-			<tr>
-				<td>
-					<c:if test="${map.pager.curBlock > 1}">
-						<a href="javascript:list('1')">[처음]</a>
-					</c:if>
-					<c:if test="${map.pager.curBlock > 1}">
-						<a href="javascript:list('${map.pager.prevPage}')">[이전]</a>
-					</c:if>
-					<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
-						<c:choose>
-							<c:when test="${num == map.pager.curPage}">
-								<span style="color:red;">${num}</span>&nbsp;
-							</c:when>
-							<c:otherwise>
-								<a href="javascript:list('${num}')">${num}</a>&nbsp;					
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<c:if test="${map.pager.curBlock <= map.pager.totBlock}">
-						<a href="javascript:list('${map.pager.nextPage}')">[다음]</a>
-					</c:if>
-					<c:if test="${map.pager.curPage <= map.pager.totPage }">
-						<a href="javascript:list('${map.pager.totPage}')">[끝]</a>
-					</c:if>
-				</td>
-			</tr>		
-			
+				<tr>
+					<td colspan="3">
+						<div class="text-center">
+							<ul class="pagination">
+								<li>
+									<c:if test="${map.pager.curBlock > 1}">
+									<a href="javascript:list('1')">[처음]</a>
+									</c:if>
+								</li>
+								<li>
+									<c:if test="${map.pager.curBlock > 1}">
+									<a href="javascript:list('${map.pager.prevPage}')">[이전]</a>
+									</c:if>
+								</li>
+								<li>
+									<c:forEach var="num" begin="${map.pager.blockBegin}" end="${map.pager.blockEnd}">
+										<c:choose>
+										<c:when test="${num == map.pager.curPage}">
+										<span style="color:red;">${num}</span>&nbsp;
+										</c:when>
+										<c:otherwise>
+										<a href="javascript:list('${num}')">${num}</a>&nbsp;					
+										</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</li>
+								<li>
+									<c:if test="${map.pager.curBlock <= map.pager.totBlock}">
+									<a href="javascript:list('${map.pager.nextPage}')">[다음]</a>
+									</c:if>
+								</li>
+								<li>
+									<c:if test="${map.pager.curPage <= map.pager.totPage }">
+									<a href="javascript:list('${map.pager.totPage}')">[끝]</a>
+									</c:if>
+								</li>
+							</ul>
+						</div>			
+					</td>
+				</tr>
 		</tbody>
 	</table>
-	<input type="button" value="회원가입" id="btnInsert">
+</div>
 
-	<div>
-		<input type="button" value="로그아웃" id="btnLogout">	
-	</div>
+<div>
+	<input type="button" class="btn btn-primary" value="회원가입" id="btnInsert">
+	<input type="button" class="btn btn-secondary" value="로그아웃" id="btnLogout">	
+</div>
 
 		
 </body>

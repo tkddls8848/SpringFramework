@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reply">
 	<insert id="insertReply" parameterType="com.kitri.project.board.ReplyDTO">
-		INSERT INTO reply (rno, bno, replytext, memID) 
-		VALUES (reply_seq.nextval(), #{bno}, #{replytext}, #{memID})
+		INSERT INTO reply (rno, bno, replytext, userid) 
+		VALUES (reply_seq.nextval(), #{bno}, #{replytext}, #{userid})
 	</insert>
 	
 	<select id="count" resultType="int">
@@ -19,10 +19,10 @@
 		FROM (
 			SELECT rownum as rn, A.*
 			FROM (
-                    SELECT rno, bno, replytext, m.memID, r.regdate, r.updatedate,
-                        (SELECT memID FROM board WHERE bno = r.bno) as writer
-                    FROM reply r, member m
-                    WHERE r.memID=m.memID and bno = #{bno}
+                    SELECT rno, bno, replytext, u.userid, r.regdate, r.updatedate,
+                        (SELECT userid FROM board WHERE bno = r.bno) as writer
+                    FROM reply r, users u
+                    WHERE r.userid=u.userid and bno = #{bno}
                     ORDER BY rno desc
                     ) A 
                 )

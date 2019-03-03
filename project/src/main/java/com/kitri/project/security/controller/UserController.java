@@ -1,5 +1,6 @@
 package com.kitri.project.security.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kitri.project.security.dao.UserDAO;
 import com.kitri.project.security.service.ShaEncoder;
@@ -35,7 +37,7 @@ public class UserController {
 	@RequestMapping(value = "/user/join.do")//가입 수행
 	public String Join() {
 		return "/user/join";
-	}
+	}	
 	
 	@RequestMapping(value = "/user/insertUser.do")//인원 추가 map 대신 memberDTO이용예정
 	public String insertUser(String userid, String passwd, String name, String authority) {
@@ -69,9 +71,5 @@ public class UserController {
 	public String Logout() {
 		return "/user/login";
 	}	
-	
-	@RequestMapping(value = "/user/jusoPopup.do", method=RequestMethod.GET)//주소 팝업창
-	public String jusoPopup() {
-		return "/user/jusoPopup";		
-	}
+
 }

@@ -43,7 +43,7 @@ public class BoardController {
 			@RequestParam(defaultValue = "all") String search_option, 
 			@RequestParam(defaultValue = "") String keyword) {		
 		
-		int count = 200;
+		int count = boardservice.boardTotalCount();
 		Pager pager = new Pager(count, curPage);
 		
 		int start = pager.getPageBegin();
@@ -56,7 +56,7 @@ public class BoardController {
 		map.put("search_option", search_option);
 		map.put("keyword", keyword);
 		map.put("pager", pager);
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("map", map);
 		mav.setViewName("board/boardList");
@@ -88,9 +88,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/write.do", method={RequestMethod.POST, RequestMethod.GET})
-	public String boardWrite() {		
-		
-		return "board/boardWrite";
+	public ModelAndView boardWrite(Principal principal) {		
+		System.out.println("boardWrite");
+		ModelAndView mav = new ModelAndView();
+		String userid = principal.getName();
+		mav.addObject("userid", userid);
+		mav.setViewName("board/boardWrite");
+		return mav;
 	}
 	
 	@RequestMapping(value="/insert.do", method={RequestMethod.POST, RequestMethod.GET})

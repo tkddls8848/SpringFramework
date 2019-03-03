@@ -22,16 +22,31 @@ $(function() {
 </head>
 <body>
 <form name="form" method="POST">
-		ID : <input type="text" name="memID" value="${memberDTO.memID}" readonly><br>
-		PW : <input type="password" name="memPW" value="${memberDTO.memID}" readonly><br>
-		E-MAIL : <input type="email" name="memEMAIL" value="${memberDTO.memEMAIL}"><br>
-		PHONE : <select name="memPHONE1">
-		<option value="010">010</option>
-		<option value="011">011</option>
-		<option value="012">012</option>
-		</select>
-		 - <input type="text" name="memPHONE2" placeholder="4" size="4" value="${memberDTO.memPHONE2}">
-		 - <input type="text" name="memPHONE3" placeholder="4" size="4" value="${memberDTO.memPHONE3}">
+	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+	    <div class="table-responsive">
+			<table class="table table-striped">
+				<tr>
+					<td>ID</td>
+					<td><input type="text" name="userid" value="${memberDTO.userid}"></td>
+				</tr>
+				<tr>
+					<td>E-MAIL</td>
+					<td><input type="email" name="memEMAIL" value="${memberDTO.memEMAIL}"></td>
+				</tr>
+				<tr>
+					<td>PHONE</td>
+					<td>
+					<select name="memPHONE1" value="${memberDTO.memPHONE1}">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="012">012</option>
+					</select>
+					 - <input type="text" name="memPHONE2" placeholder="4" size="4" value="${memberDTO.memPHONE2}">
+					 - <input type="text" name="memPHONE3" placeholder="4" size="4" value="${memberDTO.memPHONE3}">
+					 </td>
+				</tr>
+			</table>
+		</div>
 		 <button id="btnComplete">수정완료</button>
 		 <button id="btnList">리스트로</button>
 </form>

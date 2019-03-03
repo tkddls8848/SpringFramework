@@ -77,5 +77,10 @@ public class BoardService implements IBoardService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int boardTotalCount() {
+		return boardDAO.boardTotalCount();
+	}
 	
 }

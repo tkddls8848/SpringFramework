@@ -11,8 +11,10 @@
 <title>ReplyList</title>
 </head>
 <body>
-${list}
+
 ReplyList
+${list}
+
 	<c:forEach var="row" items="${list}">
 		<tr>
 			<td>

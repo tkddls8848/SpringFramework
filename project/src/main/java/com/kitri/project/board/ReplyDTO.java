@@ -7,7 +7,7 @@ public class ReplyDTO {
 	private int rno;
 	private int bno;
 	private String replytext;
-	private String memID;
+	private String userid;
 	private String name;
 	private Date regdate;
 	private Date updatedate;
@@ -32,11 +32,11 @@ public class ReplyDTO {
 	public void setReplytext(String replytext) {
 		this.replytext = replytext;
 	}
-	public String getMemID() {
-		return memID;
+	public String getUserid() {
+		return userid;
 	}
-	public void setMemID(String memID) {
-		this.memID = memID;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getName() {
 		return name;
@@ -71,7 +71,7 @@ public class ReplyDTO {
 	
 	@Override
 	public String toString() {
-		return "ReplyDTO [rno=" + rno + ", bno=" + bno + ", replytext=" + replytext + ", memID=" + memID + ", name="
+		return "ReplyDTO [rno=" + rno + ", bno=" + bno + ", replytext=" + replytext + ", memID=" + userid + ", name="
 				+ name + ", regdate=" + regdate + ", updatedate=" + updatedate + ", secret_reply=" + secret_reply
 				+ ", writer=" + writer + "]";
 	}

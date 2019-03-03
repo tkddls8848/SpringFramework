@@ -7,10 +7,9 @@ public class BoardDTO {
 	private int bno;
 	private String title;
 	private String content;
-	private String nickName;
 	private Date regdate;
 	private int viewcnt;
-	private String memID;
+	private String userid;
 	private int cnt;//댓글 수
 	private String show;
 	private String[] files;
@@ -33,12 +32,6 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getNickName() {
-		return nickName;
-	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
 	public Date getRegdate() {
 		return regdate;
 	}
@@ -51,11 +44,11 @@ public class BoardDTO {
 	public void setViewcnt(int viewcnt) {
 		this.viewcnt = viewcnt;
 	}
-	public String getMemID() {
-		return memID;
+	public String getUserid() {
+		return userid;
 	}
-	public void setMemID(String memID) {
-		this.memID = memID;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public int getCnt() {
 		return cnt;

@@ -2,17 +2,26 @@ create table board(
 	bno number PRIMARY KEY,
 	title varchar2(50),
 	content varchar2(3000),
-	memID varchar2(20),
+	userid varchar2(20),
 	regdate date DEFAULT sysdate,
 	viewcnt number DEFAULT 0
 );
 
-select*from board;
+select*from board b, users u where b.userid = u.userid;
 
+		SELECT * FROM (
+		    SELECT rownum as rn, A.* from(
+		        SELECT rownum, bno, title, regdate, viewcnt, u.userid, 
+					(SELECT count(*) FROM reply WHERE bno = b.bno) as cnt
+		        FROM board b, users u
+		        ORDER BY bno desc, regdate desc
+		    ) A
+		);
+        
 drop table board;
 
-INSERT INTO board (bno, title, content, memID) 
-VALUES (seq_board.nextval, 'asdf', 'asdf', 'asdf');
+INSERT INTO board (bno, title, content, userid) 
+VALUES (seq_board.nextval, 'asdf', 'asdf', 'admin');
         
 select bno, title, content, regdate, viewcnt 
 from board
@@ -25,7 +34,7 @@ insert into board (bno, title, content, memID)
 values (seq_board.nextval, 'asdf', 'asdf', 'asdf');
 
 create sequence seq_board
-start with 300
+start with 1
 increment by 1;
 
 drop sequence seq_board;
@@ -48,7 +57,7 @@ select * from (
         where b.memID = m.memID
         order by bno desc, regdate desc
     ) A
-)where rn between 1 and 200;
+);
 
 UPDATE board
 SET title = 'ti', content = 'con'
