@@ -32,7 +32,6 @@ INDEX VERSION 1.131+C:\SpringFramework\SP\.metadata\.plugins\org.eclipse.jdt.cor
 2503104200.index
 4057541151.index
 972666350.index
-1403223970.index
 904289187.index
 1656433253.index
 3956861211.index

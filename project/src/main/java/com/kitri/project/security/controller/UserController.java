@@ -1,21 +1,17 @@
 package com.kitri.project.security.controller;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpMethod;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.kitri.project.security.dao.UserDAO;
 import com.kitri.project.security.service.ShaEncoder;
@@ -29,7 +25,7 @@ public class UserController {
 	@Inject
 	private ShaEncoder shaEncoder;
 	
-	@RequestMapping(value = "/user/login.do")//로그인 수행 시큐리티빈설정에 있음
+	@RequestMapping(value = "/")//로그인 수행 시큐리티빈설정에 있음
 	public String Login() {
 		return "/user/login";
 	}

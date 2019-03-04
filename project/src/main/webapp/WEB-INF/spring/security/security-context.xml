@@ -21,7 +21,7 @@
 	<security:intercept-url pattern="/" access="permitAll"></security:intercept-url>
 	
 	<!-- 로그인폼 -->
-	<security:form-login login-page="/user/login.do"
+	<security:form-login login-page="/"
 	login-processing-url="/user/login_check.do"	
 	authentication-success-handler-ref="userLoginSuccessHandler" 
 	authentication-failure-handler-ref="userLoginFailureHandler" 
