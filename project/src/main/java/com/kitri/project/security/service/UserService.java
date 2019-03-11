@@ -23,5 +23,9 @@ public class UserService implements IUserService {
 	public int insertUser(Map<String, String> map) {
 		return userDAO.insertUser(map);
 	}
-
+	
+	@Override
+	public int idCheck(String userid) {
+		return userDAO.idCheck(userid);
+	}
 }

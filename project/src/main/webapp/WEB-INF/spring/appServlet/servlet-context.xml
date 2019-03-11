@@ -30,7 +30,8 @@
 	<context:component-scan base-package="com.kitri.project.security.*" />
 	<context:component-scan base-package="com.kitri.project.board.*" />
 	<context:component-scan base-package="com.kitri.project.reply.*" />
-		
+	<context:component-scan base-package="com.kitri.project.version.*" />	
+	
 	<!-- @security어노테이션 활성화  	-->
 	<security:global-method-security secured-annotations="enabled"/>
 

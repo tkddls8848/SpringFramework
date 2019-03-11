@@ -8,9 +8,14 @@
 <!-- _csrf_ajax 헤더 -->
 <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
 <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
 <c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="${path}/include/css/main/css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -44,7 +49,8 @@ body {
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">포트폴리오</a>
+		<a class="navbar-brand" href="/project/">포트폴리오(홈)</a>
+		<a class="navbar-brand" href="/project/version/version">버전업데이트내역</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">

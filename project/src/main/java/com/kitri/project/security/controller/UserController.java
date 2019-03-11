@@ -11,16 +11,19 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kitri.project.security.dao.UserDAO;
 import com.kitri.project.security.service.ShaEncoder;
+import com.kitri.project.security.service.UserService;
 
 @Controller
 public class UserController {
 
 	@Inject
-	private UserDAO UserDAO;
+	private UserService userservice;
 	
 	@Inject
 	private ShaEncoder shaEncoder;
@@ -46,7 +49,7 @@ public class UserController {
 		map.put("name", name);
 		map.put("authority", authority);
 		
-		int result=UserDAO.insertUser(map);
+		int result=userservice.insertUser(map);
 		System.out.println("result : " + result);
 		return "/user/login";
 	}	
@@ -68,4 +71,16 @@ public class UserController {
 		return "/user/login";
 	}	
 
+	@RequestMapping(value = "/user/idCheck.do", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> idCheck(String userid) {
+		System.out.println(userid);
+		int cnt = userservice.idCheck(userid);
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		
+		map.put("cnt", cnt);
+		
+		System.out.println("cnt"+cnt);
+		return map;		
+	}
 }

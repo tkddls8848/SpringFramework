@@ -15,5 +15,10 @@
 		INSERT INTO users
 		VALUES (#{userid}, #{passwd}, #{name}, 1, #{authority})
 	</insert>
- 
+	
+ 	<select id="idCheck" parameterType="String" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM users 
+		WHERE userid = #{userid}
+	</select>
 </mapper>

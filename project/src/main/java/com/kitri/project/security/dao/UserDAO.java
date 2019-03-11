@@ -23,4 +23,8 @@ public class UserDAO implements IUserDAO {
 		return sqlSession.insert("user.insertUser", map);
 	}
 
+	@Override
+	public int idCheck(String userid) {
+		return sqlSession.selectOne("user.idCheck", userid);
+	}
 }
