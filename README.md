@@ -10,6 +10,7 @@ DB : Oracle 11g xe
 WAS : Tomcat 8.5
 Framework : SpringFramework 4.3.2, Spring security 4.3.2.
 
-2월 18일
-Amazon Web Server 인스턴스 구현
-인스턴스:  
+Amazon Web Server EC2(ubuntu) 인스턴스 구현 + RDS oracle DB 연동
+
+URL
+54.180.25.64:8090/project/
