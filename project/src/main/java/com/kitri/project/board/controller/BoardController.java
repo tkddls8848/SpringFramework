@@ -87,7 +87,7 @@ public class BoardController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/write.do", method={RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value="/write.do")
 	public ModelAndView boardWrite(Principal principal) {		
 		System.out.println("boardWrite");
 		ModelAndView mav = new ModelAndView();

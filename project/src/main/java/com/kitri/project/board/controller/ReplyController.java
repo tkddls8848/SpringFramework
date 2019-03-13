@@ -1,11 +1,13 @@
 package com.kitri.project.board.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,18 +27,20 @@ public class ReplyController {
 	ReplyService replyservice;
 	
 	@RequestMapping(value="/insert.do", method=RequestMethod.POST)
-	@ResponseBody
-	public void insert(ReplyDTO replyDTO, Principal principal) {
+	public void insert(Integer bno, String replytext , ReplyDTO replyDTO, Principal principal) {
 		System.out.println("replyinsert");
+		System.out.println("bno"+bno);
+		System.out.println("replytext"+replytext);
 		String userid = principal.getName();
-		System.out.println(userid);
+//		int bno = (int) params.get("bno");
+//		String replytext = (String) params.get("replytext");
 		replyDTO.setUserid(userid);
+
 		replyservice.insert(replyDTO);
 	}
 	
 	@RequestMapping(value="/list.do")
-	@ResponseBody
-	public ModelAndView list(int bno,
+	public @ResponseBody ModelAndView list(int bno,
 			@RequestParam(defaultValue = "1") int curPage,
 			ModelAndView mav, Principal principal) {
 		System.out.println("replylist");

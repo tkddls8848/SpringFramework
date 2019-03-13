@@ -12,14 +12,14 @@
 			location.href="/project/user/join.do";
 		}
 	</script>
-	<title>시큐리티 로그인</title>
+	<title>포트폴리오 사이트 로그인</title>
 </head>
 <body>
 	<div class="container" style="width:500px">
 		<span style="color:red">${errMsg}</span> 
 		<form class="form-signin" action="/project/user/login_check.do" method="POST">
 			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
-			<h2 class="form-signin-heading">시큐리티 로그인</h2>
+			<h2 class="form-signin-heading">게시판 로그인</h2>
 				<input type="text" name="userid" id="userid" class="form-control" placeholder="ID" required autofocus>
 				<input type="password" name="passwd" id="passwd" class="form-control" placeholder="Password" required>
 				<div class="checkbox">

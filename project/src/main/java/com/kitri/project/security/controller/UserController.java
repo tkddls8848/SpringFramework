@@ -72,8 +72,7 @@ public class UserController {
 	}	
 
 	@RequestMapping(value = "/user/idCheck.do", method = RequestMethod.POST)
-	@ResponseBody
-	public Map<Object, Object> idCheck(String userid) {
+	public @ResponseBody Map<Object, Object> idCheck(String userid) {
 		System.out.println(userid);
 		int cnt = userservice.idCheck(userid);
 		Map<Object, Object> map = new HashMap<Object, Object>();

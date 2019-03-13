@@ -13,10 +13,10 @@
 <h3>게시글 쓰기</h3>
 사용자명 : ${userid}
 <br>
-	<form action="/project/board/insert.do">
-	<input type="hidden" id="bno" name="bno" value="${dto.bno}">
-	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+	<form action="/project/board/insert.do" method="get">
 	    <div class="table-responsive">
+	    	<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">	
+	    	<input type="hidden" id=userid name="userid" value="${userid}">
 			<table class="table table-striped">
 				<tr>
 					<td>작성자명</td>

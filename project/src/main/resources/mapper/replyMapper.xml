@@ -5,7 +5,7 @@
 <mapper namespace="reply">
 	<insert id="insertReply" parameterType="com.kitri.project.board.ReplyDTO">
 		INSERT INTO reply (rno, bno, replytext, userid) 
-		VALUES (reply_seq.nextval(), #{bno}, #{replytext}, #{userid})
+		VALUES (reply_seq.nextval, #{bno, jdbcType=INTEGER}, #{replytext, jdbcType=VARCHAR}, #{userid})
 	</insert>
 	
 	<select id="count" resultType="int">

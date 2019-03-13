@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,15 +13,14 @@
 </head>
 <body>
 
-ReplyList
-${list}
+댓글 목록
+
 
 	<c:forEach var="row" items="${list}">
 		<tr>
 			<td>
-				${row.name}
-				${row.regdate}
-				<br>
+				${row.name}<br>
+				<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"></fmt:formatDate><br>
 				${row.replytext}
 			</td>
 		</tr>

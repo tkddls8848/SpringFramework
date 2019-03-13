@@ -11,11 +11,12 @@
 $(function(){
 	$("#btnWrite").click(function(){
 		location.href="/project/board/write.do";
-	});
+	})
+	
 	$("#btnAdmin").click(function() {
 		location.href = "/project/member/list";
-	});
-});
+	})
+})
 
 function list(page){
 	location.href="/project/board/list?curPage="+page
@@ -32,12 +33,11 @@ function list(page){
 <p>${map.count}개의 게시물이 있습니다.</p>
 </div>
 </div>
-
-	<form name="form" class="form-inline mt-2 mt-md-0" method="get" action="/project/board/list">
-		<input name="${_csrf.parameterName}" class="form-control mr-sm-2" aria-label="Search" type="hidden" value="${_csrf.token}">
 		<div class="container">
 			<button id="btnAdmin" class="btn btn-primary pull-left" >관리자페이지</button>
 		</div>
+	<form name="form" class="form-inline mt-2 mt-md-0" method="get" action="/project/board/list">
+		<input name="${_csrf.parameterName}" class="form-control mr-sm-2" aria-label="Search" type="hidden" value="${_csrf.token}">
 		<div class="container">
 			<select name="search_option" class="form-control">
 				<option value="all">모두</option>
@@ -71,10 +71,7 @@ function list(page){
 			+&search_option=${map.search_option}
 			+&keyword=${map.keyword}">${row.title}</a></td>
 			<td>
-				<span>(${row.cnt})</span>
-				<c:if test="${row.cnt > 0}">
-					<span style="color:red;">(${row.cnt})</span>
-				</c:if>
+			<span>(${row.cnt})</span>
 			</td>
 			<td><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"></fmt:formatDate></td>
 			<td>${row.viewcnt}</td>

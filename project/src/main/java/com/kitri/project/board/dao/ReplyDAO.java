@@ -26,7 +26,7 @@ public class ReplyDAO implements IReplyDAO{
 
 	@Override
 	public void insert(ReplyDTO replyDTO) {
-		sqlsession.insert("reply.listReply", replyDTO);
+		sqlsession.insert("reply.insertReply", replyDTO);
 	}
 
 	@Override

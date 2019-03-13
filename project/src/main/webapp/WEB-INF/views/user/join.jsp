@@ -25,9 +25,8 @@ $(function(){
 			data:{userid : userid},
 			url:"/project/user/idCheck.do",
 	        dataType : "json",
-	        beforeSend: function(xhr){ 
-	        	xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}"); 
-	        }
+	        contentType: 'application/json',
+	        beforeSend: function(xhr){xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");}
 		}).done(function(map){
 			if(map.cnt >= 1){
 				alert("아이디가 존재합니다.");
