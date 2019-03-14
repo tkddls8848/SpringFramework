@@ -5,7 +5,7 @@
 <html>
 <head>
 <%@include file="../include/header.jsp" %>
-<meta charset="UTF-8" http-equiv="refresh" content="3, /project/user/login.do">
+<meta charset="UTF-8" http-equiv="refresh" content="3, /project/">
 <title>디나이</title>
 </head>
 <body>

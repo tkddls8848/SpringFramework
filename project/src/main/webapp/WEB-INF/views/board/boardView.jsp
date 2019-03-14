@@ -60,17 +60,15 @@ function listReply(num){
 				</tr>
 				<tr>
 					<td>제목</td>
-					<td><input type="text" name="title" id="title"
-						value="${dto.title}"></td>
+					<td><input type="text" name="title" id="title" value="${dto.title}"></td>
 				</tr>
 				<tr>
 					<td>내용</td>
 					<td><textarea name="content" id="content" cols="80" rows="3">${dto.content}</textarea></td>
 				</tr>
 			</table>
-			<input type="submit" id="btnUpdate" class="btn btn-primary"
-				value="수정"> <a href="/project/board/list"><input
-				type="button" class="btn btn-secondary" id="btnList" value="목록"></a>
+			<input type="submit" id="btnUpdate" class="btn btn-primary" value="수정"> 
+			<a href="/project/board/list"><input type="button" class="btn btn-secondary" id="btnList" value="목록"></a>
 		</div>
 	</form>
 	<form action="/project/board/delete.do">
@@ -81,7 +79,7 @@ function listReply(num){
 
 	
 	<div style="width:700px; text-align:center">
-		<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성하세요.ajax미구현상태"></textarea>
+		<textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성하세요."></textarea>
 		<br>
 		<button id="btnReply">댓글쓰기(ajax)</button>
 	</div>

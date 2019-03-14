@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<h3>게시글 쓰기</h3>
+<h3>새로운 글쓰기</h3>
 사용자명 : ${userid}
 <br>
 	<form action="/project/board/insert.do" method="get">
