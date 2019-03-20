@@ -1,9 +1,12 @@
 # SpringFramework
 SpringFramework에 대한 리뷰 및 프로젝트구현
 
-작업환경
+# 기능구현
+스프링 시큐리티를 이용한 로그인 기능이 부여된 게시판 페이지
 
-language : java JDK 1.8.0 u201, javascript, jQuery
+# 작업환경
+
+language : java JDK 1.8.0 u201, javascript, jQuery<br>
 view design : bootstrap
 IDE : Eclipse 2018-12
 DB : Oracle 11g xe
