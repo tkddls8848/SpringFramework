@@ -18,7 +18,7 @@ public class UserLoginFailureHandler implements AuthenticationFailureHandler{
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
 		
-		request.setAttribute("errMsg", "UserLoginFailureHandler.");
+		request.setAttribute("errMsg", "아이디와 비밀번호를 다시 입력하세요.");
 		request.getRequestDispatcher("/WEB-INF/views/user/login.jsp").forward(request, response);
 		
 	}

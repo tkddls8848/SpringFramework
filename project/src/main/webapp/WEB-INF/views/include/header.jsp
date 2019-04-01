@@ -40,6 +40,7 @@ body {
 </style>
 
 <nav class="navbar navbar-default">
+<sec:authentication var="principal" property="principal"></sec:authentication>
 	<div class="container-fluid">
 		<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapsed"
@@ -56,6 +57,23 @@ body {
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="https://github.com/tkddls8848">소개(깃허브)<span class="sr-only"></span></a></li>
 			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<sec:authorize access="isAuthenticated()">
+						<a href="#" onclick="document.getElementById('logoutForm').submit();">로그아웃</a>
+						<form id="logoutForm" action="/project/user/logout.do" method="POST">
+							<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">
+						</form>
+					</sec:authorize>
+				</li>
+				<li>
+					<sec:authorize access="isAuthenticated()">
+						<a href="#">${principal.username}</a>
+					</sec:authorize>
+				</li>
+			</ul>
 		</div>
+
+
 	</div>
 </nav>

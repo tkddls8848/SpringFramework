@@ -66,7 +66,7 @@ public class UserController {
 		return "/admin/main";		
 	}
 
-	@RequestMapping(value = "/logout.do")//security:logout태그에 url설정과 invaildate
+	@RequestMapping(value = "/user/logout.do")//security:logout태그에 url설정과 invaildate
 	public String Logout() {
 		return "/user/login";
 	}	

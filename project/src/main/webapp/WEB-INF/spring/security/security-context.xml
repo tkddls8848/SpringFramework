@@ -36,7 +36,7 @@
 	</security:session-management>
 	
 	<security:logout delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" 
-	logout-success-url="/user/login.do" 
+	logout-success-url="/" 
 	logout-url="/user/logout.do" 
 	invalidate-session="true"></security:logout>
 	<security:remember-me key="userKey" token-validity-seconds="86400"/>

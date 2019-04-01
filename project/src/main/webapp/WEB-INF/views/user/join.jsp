@@ -45,10 +45,10 @@ $(function(){
 			<input id="checkCnt" type="hidden" value="0">	 
 			<h2 class="form-signin-heading">회원가입</h2>
 				<input type="text" name="userid" id="userid" class="form-control" placeholder="ID" required autofocus>
-				<button class="btn btn-normal btn-block" id="btnCheckuserid">ID체크</button>
+				<input type="button" class="btn btn-normal btn-block" id="btnCheckuserid">ID체크
 				<input type="password" name="passwd" id="passwd" class="form-control" placeholder="Password" required>
 				<input type="text" name="address" id="address" class="form-control" placeholder="주소">
-				<input type="button" onclick="execDaumPostcode()" value="주소 검색"><br>
+				<input type="button" class="btn btn-normal btn-block" onclick="execDaumPostcode()" value="주소 검색"><br>
 				<input type="text" name="name" id="name" class="form-control" placeholder="사용자이름" required>
 				<select name="authority" class="form-control" required>
 					<option value="ROLE_USER">일반사용자</option>
@@ -67,7 +67,7 @@ $(function(){
 
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6018786c8ac12cf66764c56c734373a&libraries=services"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%@include file="./key"%>"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {

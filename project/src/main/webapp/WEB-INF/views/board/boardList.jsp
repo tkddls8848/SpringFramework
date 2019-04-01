@@ -27,15 +27,18 @@ function list(page){
 </script>
 </head>
 <body>
-<div class="jumbotron">
-<div class="container">
-<h1 class="display-3">안녕하세요 ${pageContext.request.userPrincipal.name}님.</h1>
-<p>${map.count}개의 게시물이 있습니다.</p>
-</div>
-</div>
+	<div class="jumbotron">
 		<div class="container">
-			<button id="btnAdmin" class="btn btn-primary pull-left" >관리자페이지</button>
+			<h1 class="display-3">안녕하세요${principal.username}님.</h1>
+			<p>${map.count}개의 게시물이 있습니다.</p>
 		</div>
+	</div>
+
+	<sec:authorize access="hasRole('ROLE_ADMIN') and isAuthenticated()">
+		<button id="btnAdmin" class="btn btn-primary pull-left" >관리자페이지</button>
+	</sec:authorize>
+
+
 	<form name="form" class="form-inline mt-2 mt-md-0" method="get" action="/project/board/list">
 		<input name="${_csrf.parameterName}" class="form-control mr-sm-2" aria-label="Search" type="hidden" value="${_csrf.token}">
 		<div class="container">
