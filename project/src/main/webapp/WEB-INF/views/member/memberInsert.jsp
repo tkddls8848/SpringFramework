@@ -6,7 +6,6 @@
 <head>
 <%@include file="../include/header.jsp" %>
 <meta charset="UTF-8">
-<title>회원가입</title>
 </head>
 <body>
 	<form name="form" action="/project/member/join" method="post">

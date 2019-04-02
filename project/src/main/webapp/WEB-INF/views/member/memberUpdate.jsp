@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원수정</title>
 <%@include file="../include/header.jsp" %>
 <script>
 $(function() {

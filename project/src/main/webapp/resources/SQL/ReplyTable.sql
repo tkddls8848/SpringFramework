@@ -16,7 +16,7 @@ create sequence reply_seq
 start with 1
 increment by 1;
 
-insert into reply (rno, bno, replytext, memID) 
+insert into reply (rno, bno, replytext, userid) 
 values (reply_seq.nextval, '300', 'asdf', 'memID1');
 
 SELECT rno, bno, replytext, m.memID, r.regdate, r.updatedate,

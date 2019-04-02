@@ -30,7 +30,7 @@ order by bno desc;
 insert into board (bno, title, content, memID) 
 values ((select nvl(max (bno)+1,1) from board), 'title', 'content', 'memID');
 
-insert into board (bno, title, content, memID) 
+insert into board (bno, title, content, userid) 
 values (seq_board.nextval, 'asdf', 'asdf', 'asdf');
 
 create sequence seq_board
@@ -43,8 +43,8 @@ declare
     i number := 1;
 begin
     while i<= 300 loop
-        insert into board (bno, title, content, memID) 
-        values ((select nvl(max (bno)+1,1) from board), 'title'||i, 'content'||i, 'memID'||i);
+        insert into board (bno, title, content, userid) 
+        values ((select nvl(max (bno)+1,1) from board), 'title'||i, 'content'||i, 'userid'||i);
         i := i+1;
     end loop;
 end;

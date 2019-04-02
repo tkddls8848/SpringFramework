@@ -9,10 +9,10 @@
 <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
 <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
 
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
 <c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -29,6 +29,9 @@ html {
 body {
   margin-bottom: 60px; /* Margin bottom by footer height */
 }
+table {
+	width : 800px;
+}
 .footer {
   position: absolute;
   bottom: 0;
@@ -38,7 +41,7 @@ body {
   background-color: #f5f5f5;
 }
 </style>
-
+<title>포트폴리오 사이트</title>
 <nav class="navbar navbar-default">
 <sec:authentication var="principal" property="principal"></sec:authentication>
 	<div class="container-fluid">
@@ -68,12 +71,10 @@ body {
 				</li>
 				<li>
 					<sec:authorize access="isAuthenticated()">
-						<a href="#">${principal.username}</a>
+						<a href="${path}/member/view?userid=${principal.username}">${principal.username}</a>
 					</sec:authorize>
 				</li>
 			</ul>
 		</div>
-
-
 	</div>
 </nav>

@@ -9,13 +9,11 @@
 <!-- _csrf_ajax 헤더 -->
 <meta id="_csrf" name="_csrf" content="${_csrf.token}"/>
 <meta id="_csrf_header" name="_csrf_header" content="${_csrf.headerName}"/>
-<title>ReplyList</title>
 </head>
 <body>
 
-댓글 목록
-
-
+<h4>댓글 목록</h4>
+<table class="table table-striped">
 	<c:forEach var="row" items="${list}">
 		<tr>
 			<td>
@@ -25,6 +23,7 @@
 			</td>
 		</tr>
 	</c:forEach>
+</table>
 
 </body>
 </html>

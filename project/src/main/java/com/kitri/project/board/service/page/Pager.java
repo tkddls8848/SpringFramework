@@ -34,7 +34,7 @@ public class Pager {
 		curBlock = (int) Math.ceil((curPage-1)/BLOCK_SCALE)+1;
 		
 		blockBegin=(curBlock-1)*BLOCK_SCALE+1;
-		blockEnd=blockBegin+BLOCK_SCALE-1;
+		blockEnd=(blockBegin+BLOCK_SCALE)-1;
 		
 		if(blockEnd > totPage) {
 			blockEnd = totPage;
@@ -69,7 +69,7 @@ public class Pager {
 		return totPage;
 	}
 	public void setTotPage(int count) {
-		totPage = (int) Math.ceil(count/PAGE_SCALE);
+		totPage = (int) Math.ceil((count*1.0)/PAGE_SCALE);
 	}
 	public int getTotBlock() {
 		return totBlock;

@@ -12,7 +12,6 @@
 			location.href="/project/user/join.do";
 		}
 	</script>
-	<title>포트폴리오 사이트 로그인</title>
 </head>
 <body>
 	<div class="container" style="width:500px">
@@ -31,7 +30,7 @@
 			<button class="btn btn-lg btn-normal btn-block" type="button" onclick="join()">회원가입</button>	
 		</form>
 	</div>
-	
+
 	<div>
 		<%@ include file="../include/footer.jsp" %>	
 	</div>

@@ -9,68 +9,71 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-<!-- 정적 리소스 보안 제외 -->
-<security:http pattern="/include/**" security="none"></security:http>
-<security:http pattern="/ckeditor/**" security="none"></security:http>
-<security:http pattern="/images/**" security="none"></security:http>
-
-<security:http auto-config="true" use-expressions="true">
-	<!-- 관리자영역-->
-	<security:intercept-url pattern="/member/**" access="hasRole('ROLE_ADMIN')"></security:intercept-url>
-	<!-- 일반접근영역 -->
-	<security:intercept-url pattern="/" access="permitAll"></security:intercept-url>
-	
-	<!-- 로그인폼 -->
-	<security:form-login login-page="/"
-	login-processing-url="/user/login_check.do"	
-	authentication-success-handler-ref="userLoginSuccessHandler" 
-	authentication-failure-handler-ref="userLoginFailureHandler" 
-	username-parameter="userid" 
-	password-parameter="passwd"></security:form-login>
-	
-	<!-- 동시접속막기 -->
-	<security:session-management>
-		<security:concurrency-control max-sessions="1" 
-		expired-url="/user/login.do" 
-		error-if-maximum-exceeded="true"></security:concurrency-control>
-	</security:session-management>
-	
-	<security:logout delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" 
-	logout-success-url="/" 
-	logout-url="/user/logout.do" 
-	invalidate-session="true"></security:logout>
-	<security:remember-me key="userKey" token-validity-seconds="86400"/>
-	<!-- 접근권한없는코드 -->
-	<security:access-denied-handler ref="userDeniedHandler"></security:access-denied-handler>
-</security:http>
-
-<!-- handler 빈 -->
-<beans:bean id="userLoginSuccessHandler" class="com.kitri.project.security.service.UserLoginSuccessHandler"></beans:bean>
-<beans:bean id="userLoginFailureHandler" class="com.kitri.project.security.service.UserLoginFailureHandler"></beans:bean>
-<beans:bean id="userDeniedHandler" class="com.kitri.project.security.service.UserDeniedHandler"></beans:bean>
-
-<!-- 로그인 인증 처리 빈 -->
-
-<beans:bean id="userService" class="com.kitri.project.security.service.UserAuthenticationService">
-<beans:constructor-arg name="sqlSession" ref="sqlSession"></beans:constructor-arg>
-</beans:bean>
-
-<!-- 암호화 비밀번호 사용자 입력과 체크 -->
-
-<security:authentication-manager>
-	<security:authentication-provider user-service-ref="userService">
-		<security:password-encoder ref="passwordEncoder">
-			<security:salt-source user-property="username"/>
-		</security:password-encoder>
-	</security:authentication-provider>
-</security:authentication-manager>
-
-<!-- 비밀번호 암호화 -->
-
-<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
-<beans:constructor-arg name="strength" value="256"></beans:constructor-arg>
-</beans:bean>
-
-</beans:beans>
+		
+		<!-- 정적 리소스 보안 제외 -->
+		<security:http pattern="/include/**" security="none"></security:http>
+		<security:http pattern="/ckeditor/**" security="none"></security:http>
+		<security:http pattern="/images/**" security="none"></security:http>
+		
+		<security:http auto-config="true" use-expressions="true">
+		
+			<!-- 관리자영역-->
+			<security:intercept-url pattern="/member/**" access="hasRole('ROLE_ADMIN')"></security:intercept-url>
+			
+			<!-- 일반접근영역 -->
+			<security:intercept-url pattern="/" access="permitAll"></security:intercept-url>
+			
+			<!-- 로그인폼 -->
+			<security:form-login login-page="/"
+			login-processing-url="/user/login_check.do"	
+			authentication-success-handler-ref="userLoginSuccessHandler" 
+			authentication-failure-handler-ref="userLoginFailureHandler" 
+			username-parameter="userid" 
+			password-parameter="passwd"></security:form-login>
+			
+			<!-- 동시접속막기 -->
+			<security:session-management>
+				<security:concurrency-control max-sessions="1" 
+				expired-url="/user/login.do" 
+				error-if-maximum-exceeded="true"></security:concurrency-control>
+			</security:session-management>
+			
+			<!-- 로그아웃 -->	
+			
+			<security:logout delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE" 
+			logout-success-url="/" 
+			logout-url="/user/logout.do" 
+			invalidate-session="true"></security:logout>
+			<security:remember-me key="userKey" token-validity-seconds="86400"/>
+			
+			<!-- 접근권한없는코드 -->
+			<security:access-denied-handler ref="userDeniedHandler"></security:access-denied-handler>
+		</security:http>
+		
+		<!-- handler 빈 -->
+		<beans:bean id="userLoginSuccessHandler" class="com.kitri.project.security.service.UserLoginSuccessHandler"></beans:bean>
+		<beans:bean id="userLoginFailureHandler" class="com.kitri.project.security.service.UserLoginFailureHandler"></beans:bean>
+		<beans:bean id="userDeniedHandler" class="com.kitri.project.security.service.UserDeniedHandler"></beans:bean>
+		
+		<!-- 로그인 인증 처리 빈 -->
+		<beans:bean id="userService" class="com.kitri.project.security.service.UserAuthenticationService">
+		<beans:constructor-arg name="sqlSession" ref="sqlSession"></beans:constructor-arg>
+		</beans:bean>
+		
+		<!-- 암호화 비밀번호 사용자 입력과 체크 -->
+		<security:authentication-manager>
+			<security:authentication-provider user-service-ref="userService">
+				<security:password-encoder ref="passwordEncoder">
+					<security:salt-source user-property="username"/>
+				</security:password-encoder>
+			</security:authentication-provider>
+		</security:authentication-manager>
+		
+		<!-- 비밀번호 암호화 -->
+		<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<beans:constructor-arg name="strength" value="256"></beans:constructor-arg>
+		</beans:bean>
+		
+		</beans:beans>
 
 

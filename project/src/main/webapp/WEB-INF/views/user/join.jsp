@@ -5,7 +5,6 @@
 <html>
 <head>
 <%@include file="../include/header.jsp" %>
-
 <script type="text/javascript">
 $(function(){
 	$("#btnGoLogin").click(function(){
@@ -39,6 +38,7 @@ $(function(){
 <title>회원가입</title>
 </head>
 <body>
+
 	<div class="container" style="width:500px">
 		<form name="form" action="/project/user/insertUser.do" method="post">
 			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">		
@@ -58,16 +58,15 @@ $(function(){
 			<button class="btn btn-lg btn-normal btn-block" id="btnGoLogin" type="button">로그인 화면으로</button>	
 		</form>
 	</div>
-	
 
 	<div style="text-align: center;">
 		<div id="map" style="height:300px; width:300px; display:inline-block;">
 		</div>
 	</div>
 
-
+<!-- 지도 API -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%@include file="./key"%>"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%@include file="../include/key"%>"></script>
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {

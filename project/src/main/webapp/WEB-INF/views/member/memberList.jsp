@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원목록</title>
 <style type="text/css">
 table {
 	boarder: 1px solid black;
