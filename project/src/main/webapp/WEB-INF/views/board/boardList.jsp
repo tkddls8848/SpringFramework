@@ -37,10 +37,8 @@ function list(page){
 	</div>
 	<div class="container">
 		<div class="col-md-12">
-
-			<form name="formSearch" class="form-inline mt-2 mt-md-0" method="get" action="/project/board/list">
+			<form id="formSearch" class="form-inline mt-2 mt-md-0" method="get" action="/project/board/list">
 				<input name="${_csrf.parameterName}" class="form-control mr-sm-2" aria-label="Search" type="hidden" value="${_csrf.token}">
-				
 					<select name="search_option" class="form-control">
 						<option value="all">모두</option>
 						<option value="userid">이름</option>
@@ -50,7 +48,7 @@ function list(page){
 				<input type="text" name="keyword" value="${map.keyword}">
 			</form>
 
-			<input type="submit" value="검색" class="btn btn-outline-success my-2 my-sm-0" id="btnSearch">
+			<input type="button" value="검색" class="btn btn-outline-success my-2 my-sm-0" id="btnSearch">
 			<input type="button" class="btn btn-primary" value="글쓰기" id="btnWrite">
 			<sec:authorize access="hasRole('ROLE_ADMIN') and isAuthenticated()">
 				<button id="btnAdmin" class="btn btn-primary pull-right" >관리자페이지로</button>
