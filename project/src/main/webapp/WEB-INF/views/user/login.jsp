@@ -7,13 +7,16 @@
 	<%@include file="../include/header.jsp" %>
 
 	<script type="text/javascript">
-	
 		function join(){
 			location.href="/project/user/join.do";
 		}
+		
+		function windowOpen(){
+			window.open("/project/version/notice", "프로젝트 진행 내역", "width=800, height=600, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+		}
 	</script>
 </head>
-<body>
+<body onload="windowOpen()">
 	<div class="container" style="width:500px">
 		<span style="color:red">${errMsg}</span> 
 		<form class="form-signin" action="/project/user/login_check.do" method="POST">

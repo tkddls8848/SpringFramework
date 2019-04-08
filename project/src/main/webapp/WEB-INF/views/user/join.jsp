@@ -12,31 +12,24 @@ $(function(){
 	});
 	
 	$("#btnJoin").click(function(){
-		var userid = $("#userid").val().trim();
-		
-		if(userid == null || userid == ""){
-			$("checkCnt").val('0');
-			alert("아이디값을 입력하세요");
-		} else {
-			idCheck();	
-		}
+		idCheck();
 	});
 	
 	$("#btnCheckuserid").click(function(){
 		var userid = $("#userid").val().trim();
 
 		for (var i=0; i < userid.length; i++) { 
-		    ch = userid.charAt(i).charCodeAt();
+		    var ch = userid.charAt(i).charCodeAt();
 		        if( (ch >= 33 && ch <= 47) || (ch >= 58 && ch <= 64) || (ch >= 91 && ch <= 96) || (ch >= 123 && ch <= 126) ) {
 					$("#userid").val('');
-					$("#checkCnt").val('0');
+					$("#checkId").val('0');
 		        	alert("특수문자를 사용할 수 없습니다");
 		            return;
 		        }
 		}
 		
 		if(userid == null || userid == ""){
-			$("checkCnt").val('0');
+			$("checkId").val('0');
 			alert("아이디값을 입력하세요. 공백은 불가합니다.");
 		} else {
 			$.ajax({
@@ -48,38 +41,54 @@ $(function(){
 				if(map.cnt >= 1){
 					alert("아이디가 존재합니다.");
 					$("#userid").val('');
-					$("#checkCnt").val('2');
+					$("#checkId").val('2');
 				} else {
 					alert("생성 가능합니다.");
-					$("#checkCnt").val('1');
+					$("#checkId").val('1');
 				}
 			}).fail(function(){
 				alert("요청 실패");
 			})
 		}
 	})
+	
+	$("#btnCheckPw").click(function(){
+		var checkPw = $("#checkPw").val();
+		var passwd = $("#passwd").val();
+		var rePasswd = $("#rePasswd").val();
+		
+		if(passwd != null && passwd != ""){
+			if( passwd == rePasswd ){
+				$("#checkPw").val('1');
+				alert("비밀번호 확인 했습니다.")
+			} else if(passwd != rePasswd){
+				$("#checkPw").val('0');
+				$("#rePasswd").val('');
+				alert("비밀번호를 다시 입력하세요.")
+			}			
+		} else if(passwd == null || passwd == ""){
+			$("#checkPw").val('0');
+			$("#passwd").val('');
+			$("#rePasswd").val('');
+			alert("비밀번호를 입력하지 않았거나 공백입니다.")
+		}
+	});
 });
 
 function idCheck() {
-	var check = $("#checkCnt").val();
+	var check = $("#checkId").val();
+	var checkPw = $("#checkPw").val();
 	
 	if(check == 1){
-		$("#formJoin").submit();
+		if(checkPw == 1){
+			$("#formJoin").submit();
+		} else if(checkPw == 0) {
+			alert("비밀번호 입력 체크를 하지 않았습니다.");
+		}
 	} else if(check == 2) {
 		alert("아이디가 이미 존재합니다.");
 	} else if(check == 0) {
 		alert("아이디 중복 체크를 하지 않았습니다.");
-	}
-}
-
-function specialCheck(str){
-	var special_pattern = "`~!@#$%^&*()-_=+\'\"";
-	var userid = str;		
-	
-	if(special_pattern.test(userid) == false) { 
-		$("checkCnt").val('0');
-		$("userid").val('');
-		alert("특수문자는 허용하지 않습니다.");		
 	}
 }
 
@@ -90,18 +99,26 @@ function specialCheck(str){
 	<div class="container" style="width:500px">
 		<form id="formJoin" name="form" action="/project/user/insertUser.do" method="post">
 			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">		
-			<input id="checkCnt" type="hidden" value="0">	 
+			<input id="checkId" type="hidden" value="0">
+			<input id="checkPw" type="hidden" value="0">
 			<h2 class="form-signin-heading">회원가입</h2>
+			
 				<input type="text" name="userid" id="userid" class="form-control" placeholder="ID" required autofocus>
 				<input type="button" class="btn btn-normal btn-block" id="btnCheckuserid" value="ID체크">
+				
 				<input type="password" name="passwd" id="passwd" class="form-control" placeholder="Password" required>
+				<input type="password" name="rePasswd" id="rePasswd" class="form-control" placeholder="Password확인" required>
+				<input type="button" class="btn btn-normal btn-block" id="btnCheckPw" value="비밀번호 입력 확인">
+							
 				<input type="text" name="address" id="address" class="form-control" placeholder="주소">
 				<input type="button" class="btn btn-normal btn-block" onclick="execDaumPostcode()" value="주소 검색"><br>
+				
 				<input type="text" name="name" id="name" class="form-control" placeholder="사용자이름" required>
 				<select name="authority" class="form-control" required>
 					<option value="ROLE_USER">일반사용자</option>
 					<option value="ROLE_ADMIN">관리자</option>
-				</select>	
+				</select>
+				
 			<button class="btn btn-lg btn-primary btn-block" id="btnJoin" type="button">회원가입</button>
 			<button class="btn btn-lg btn-normal btn-block" id="btnGoLogin" type="button">로그인 화면으로</button>	
 		</form>
@@ -150,7 +167,7 @@ function specialCheck(str){
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
                         // 지도를 보여준다.
-                        mapContainer.style.display = "block";
+                        mapContainer.style.display = "inline-block";
                         map.relayout();
                         // 지도 중심을 변경한다.
                         map.setCenter(coords);

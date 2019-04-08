@@ -12,8 +12,8 @@ public class VersionController {
 		return "/version/version";
 	}
 	
-	@RequestMapping("/jusoPopup")
+	@RequestMapping("/notice")
 	public String JusoPopup() {
-		return "/version/jusoPopup";
+		return "/version/notice";
 	}	
 }
