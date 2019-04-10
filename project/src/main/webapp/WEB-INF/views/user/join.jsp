@@ -11,6 +11,18 @@ $(function(){
 		location.href="/project/";
 	});
 	
+	$("#btnJoin").click(function(){
+		var check = $("#checkCnt").val();
+		
+		if(check == 1){
+			$("#formJoin").submit();
+		} else if(check == 2) {
+			alert("아이디가 이미 존재합니다.");
+		} else if(check == 0) {
+			alert("아이디 중복 체크를 하지 않았습니다.");
+		}
+	});
+	
 	$("#btnCheckuserid").click(function(){
 		var userid = $("#userid").val();
 		
@@ -23,7 +35,7 @@ $(function(){
 			if(map.cnt >= 1){
 				alert("아이디가 존재합니다.");
 				$("#userid").val('');
-				$("#checkCnt").val('0');
+				$("#checkCnt").val('2');
 			} else {
 				alert("생성 가능합니다.");
 				$("#checkCnt").val('1');
@@ -38,14 +50,13 @@ $(function(){
 <title>회원가입</title>
 </head>
 <body>
-
 	<div class="container" style="width:500px">
-		<form name="form" action="/project/user/insertUser.do" method="post">
+		<form id="formJoin" name="form" action="/project/user/insertUser.do" method="post">
 			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}">		
 			<input id="checkCnt" type="hidden" value="0">	 
 			<h2 class="form-signin-heading">회원가입</h2>
 				<input type="text" name="userid" id="userid" class="form-control" placeholder="ID" required autofocus>
-				<input type="button" class="btn btn-normal btn-block" id="btnCheckuserid">ID체크
+				<input type="button" class="btn btn-normal btn-block" id="btnCheckuserid" value="ID체크">
 				<input type="password" name="passwd" id="passwd" class="form-control" placeholder="Password" required>
 				<input type="text" name="address" id="address" class="form-control" placeholder="주소">
 				<input type="button" class="btn btn-normal btn-block" onclick="execDaumPostcode()" value="주소 검색"><br>
@@ -54,7 +65,7 @@ $(function(){
 					<option value="ROLE_USER">일반사용자</option>
 					<option value="ROLE_ADMIN">관리자</option>
 				</select>	
-			<button class="btn btn-lg btn-primary btn-block" id="btnJoin" type="submit">회원가입</button>
+			<button class="btn btn-lg btn-primary btn-block" id="btnJoin" type="button">회원가입</button>
 			<button class="btn btn-lg btn-normal btn-block" id="btnGoLogin" type="button">로그인 화면으로</button>	
 		</form>
 	</div>
