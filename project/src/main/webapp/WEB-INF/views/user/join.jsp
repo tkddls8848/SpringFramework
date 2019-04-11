@@ -12,40 +12,77 @@ $(function(){
 	});
 	
 	$("#btnJoin").click(function(){
-		var check = $("#checkCnt").val();
+		var userid = $("#userid").val().trim();
 		
-		if(check == 1){
-			$("#formJoin").submit();
-		} else if(check == 2) {
-			alert("아이디가 이미 존재합니다.");
-		} else if(check == 0) {
-			alert("아이디 중복 체크를 하지 않았습니다.");
+		if(userid == null || userid == ""){
+			$("checkCnt").val('0');
+			alert("아이디값을 입력하세요");
+		} else {
+			idCheck();	
 		}
 	});
 	
 	$("#btnCheckuserid").click(function(){
-		var userid = $("#userid").val();
-		
-		$.ajax({
-			type:'post',
-			data:{userid : userid},
-			url:"/project/user/idCheck.do",
-	        beforeSend: function(xhr){xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");}
-		}).done(function(map){
-			if(map.cnt >= 1){
-				alert("아이디가 존재합니다.");
-				$("#userid").val('');
-				$("#checkCnt").val('2');
-			} else {
-				alert("생성 가능합니다.");
-				$("#checkCnt").val('1');
-			}
-		}).fail(function(){
-			alert("요청 실패");
-		})
-	})
+		var userid = $("#userid").val().trim();
 
+		for (var i=0; i < userid.length; i++) { 
+		    ch = userid.charAt(i).charCodeAt();
+		        if( (ch >= 33 && ch <= 47) || (ch >= 58 && ch <= 64) || (ch >= 91 && ch <= 96) || (ch >= 123 && ch <= 126) ) {
+					$("#userid").val('');
+					$("#checkCnt").val('0');
+		        	alert("특수문자를 사용할 수 없습니다");
+		            return;
+		        }
+		}
+		
+		if(userid == null || userid == ""){
+			$("checkCnt").val('0');
+			alert("아이디값을 입력하세요. 공백은 불가합니다.");
+		} else {
+			$.ajax({
+				type:'post',
+				data:{userid : userid},
+				url:"/project/user/idCheck.do",
+		        beforeSend: function(xhr){xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");}
+			}).done(function(map){
+				if(map.cnt >= 1){
+					alert("아이디가 존재합니다.");
+					$("#userid").val('');
+					$("#checkCnt").val('2');
+				} else {
+					alert("생성 가능합니다.");
+					$("#checkCnt").val('1');
+				}
+			}).fail(function(){
+				alert("요청 실패");
+			})
+		}
+	})
 });
+
+function idCheck() {
+	var check = $("#checkCnt").val();
+	
+	if(check == 1){
+		$("#formJoin").submit();
+	} else if(check == 2) {
+		alert("아이디가 이미 존재합니다.");
+	} else if(check == 0) {
+		alert("아이디 중복 체크를 하지 않았습니다.");
+	}
+}
+
+function specialCheck(str){
+	var special_pattern = "`~!@#$%^&*()-_=+\'\"";
+	var userid = str;		
+	
+	if(special_pattern.test(userid) == false) { 
+		$("checkCnt").val('0');
+		$("userid").val('');
+		alert("특수문자는 허용하지 않습니다.");		
+	}
+}
+
 </script>
 <title>회원가입</title>
 </head>
