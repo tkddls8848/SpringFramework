@@ -38,7 +38,7 @@ public class UserController {
 		return "/user/join";
 	}	
 	
-	@RequestMapping(value = "/user/insertUser.do")//인원 추가 map 대신 memberDTO이용예정
+	@RequestMapping(value = "/user/insertUser.do")//인원 추가
 	public String insertUser(String userid, String passwd, String name, String authority) {
 		
 		String dbpw = shaEncoder.SaltEncoding(passwd, userid);
