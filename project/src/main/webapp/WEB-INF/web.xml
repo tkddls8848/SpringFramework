@@ -56,13 +56,11 @@
 	</filter-mapping>
 	
 	<!-- Spring listener -->
-	
 	<listener>
 		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
 	</listener>
 		
 	<!-- Spring Security filter-->
-
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -75,7 +73,6 @@
 
 
 	<!-- Spring Config -->
-	
 	<error-page>
 		<error-code>500</error-code>
 		<location>/login</location>

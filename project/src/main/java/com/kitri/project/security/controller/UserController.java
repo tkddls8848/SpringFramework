@@ -1,38 +1,77 @@
 package com.kitri.project.security.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.kitri.project.security.auth.NaverLoginBO;
 import com.kitri.project.security.service.ShaEncoder;
 import com.kitri.project.security.service.UserService;
 
 @Controller
 public class UserController {
-
+	
+	/* NaverLoginBO */
+	private NaverLoginBO naverLoginBO;
+	private String apiResult = null;
+	
 	@Inject
 	private UserService userservice;
 	
 	@Inject
 	private ShaEncoder shaEncoder;
 	
-	@RequestMapping(value = "/")//로그인 수행 시큐리티빈설정에 있음
-	public String Login() {
+	@Autowired
+	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
+		this.naverLoginBO = naverLoginBO;
+	}
+	
+	@RequestMapping(value = "/", method={RequestMethod.POST, RequestMethod.GET})//로그인 수행 시큐리티빈설정에 있음
+	public String Login(Model model, HttpSession session) {
+		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		
+		System.out.println("네이버:" + naverAuthUrl);
+		
+		//네이버 
+		model.addAttribute("url", naverAuthUrl);
+
+		/* 생성한 인증 URL을 View로 전달 */
 		return "/user/login";
 	}
 
+	//네이버 로그인 성공시 callback호출 메소드
+	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
+	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
+			throws IOException {
+		System.out.println("여기는 callback");
+		OAuth2AccessToken oauthToken;
+        oauthToken = naverLoginBO.getAccessToken(session, code, state);
+        //로그인 사용자 정보를 읽어온다.
+	    apiResult = naverLoginBO.getUserProfile(oauthToken);
+		model.addAttribute("result", apiResult);
+
+        /* 네이버 로그인 성공 페이지 View 호출 */
+		return "/user/join";
+	}
+
+	
 	@RequestMapping(value = "/user/join.do")//가입 수행
 	public String Join() {
 		return "/user/join";
@@ -82,4 +121,5 @@ public class UserController {
 		System.out.println("cnt"+cnt);
 		return map;		
 	}
+
 }

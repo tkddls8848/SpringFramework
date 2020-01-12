@@ -36,7 +36,9 @@ $(function(){
 				type:'post',
 				data:{userid : userid},
 				url:"/project/user/idCheck.do",
-		        beforeSend: function(xhr){xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");}
+		        beforeSend:function(xhr){
+		        	xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+		        }
 			}).done(function(map){
 				if(map.cnt >= 1){
 					alert("아이디가 존재합니다.");
@@ -92,6 +94,14 @@ function idCheck() {
 	}
 }
 
+$(document).ready(
+	function() {
+		var name = ${result}.response.name;
+		var id = ${result}.response.id;
+		$("#userid").val("NAVER"+id);
+		$("#name").val(name);
+	}
+);
 </script>
 <title>회원가입</title>
 </head>

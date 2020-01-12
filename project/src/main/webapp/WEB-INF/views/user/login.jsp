@@ -5,18 +5,17 @@
 <html>
 <head>
 	<%@include file="../include/header.jsp" %>
-
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		function join(){
 			location.href="/project/user/join.do";
 		}
-		
 		function windowOpen(){
 			window.open("/project/version/notice", "프로젝트 진행 내역", "width=800, height=600, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
 		}
 	</script>
 </head>
-<body onload="windowOpen()">
+<body>
 	<div class="container" style="width:500px">
 		<span style="color:red">${errMsg}</span> 
 		<form class="form-signin" action="/project/user/login_check.do" method="POST">
@@ -30,7 +29,10 @@
 					</label>
 				</div>
 			<button class="btn btn-lg btn-primary btn-block" id="btnLogin" type="submit">로그인</button>
-			<button class="btn btn-lg btn-normal btn-block" type="button" onclick="join()">회원가입</button>	
+			<button class="btn btn-lg btn-normal btn-block" type="button" onclick="join()">회원가입</button>
+			<div id="naver_id_login" style="text-align:center">
+				<a href="${url}"><img width="223" src="${pageContext.request.contextPath}/resources/img/naver_Bn_Green.PNG"/></a>
+			</div>
 		</form>
 	</div>
 
