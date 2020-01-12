@@ -36,7 +36,7 @@ public class ReplyDAO implements IReplyDAO{
 
 	@Override
 	public List<ReplyDTO> list(Integer bno, int start, int end, Principal principal) {
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("bno", bno);
 		map.put("start", start);
 		map.put("end", end);

@@ -72,7 +72,7 @@ public class BoardDAO implements IBoardDAO{
 	@Override
 	public void updateBoard(BoardDTO dto) {
 		
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("bno", dto.getBno());
 		map.put("title", dto.getTitle());
 		map.put("content", dto.getContent());

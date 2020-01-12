@@ -33,7 +33,7 @@ public class UserAuthenticationService implements UserDetailsService{
 		if(user == null) {
 			throw new UsernameNotFoundException(userid);
 		}
-		List<GrantedAuthority> authority = new ArrayList<>();
+		List<GrantedAuthority> authority = new ArrayList<GrantedAuthority>();
 		authority.add(new SimpleGrantedAuthority(user.get("AUTHORITY").toString()));
 		return new UserDTO(user.get("USERNAME").toString(), 
 				user.get("PASSWORD").toString(), 

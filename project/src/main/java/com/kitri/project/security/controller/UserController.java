@@ -43,7 +43,7 @@ public class UserController {
 		
 		String dbpw = shaEncoder.SaltEncoding(passwd, userid);
 		
-		Map<String,String> map = new HashMap<>();
+		Map<String,String> map = new HashMap<String, String>();
 		map.put("userid", userid);
 		map.put("passwd", dbpw);
 		map.put("name", name);
