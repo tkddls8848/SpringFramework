@@ -60,11 +60,12 @@ public class UserController {
 	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
 			throws IOException {
-		System.out.println("여기는 callback");
+
 		OAuth2AccessToken oauthToken;
         oauthToken = naverLoginBO.getAccessToken(session, code, state);
         //로그인 사용자 정보를 읽어온다.
 	    apiResult = naverLoginBO.getUserProfile(oauthToken);
+		System.out.println(apiResult);
 		model.addAttribute("result", apiResult);
 
         /* 네이버 로그인 성공 페이지 View 호출 */
@@ -73,7 +74,9 @@ public class UserController {
 
 	
 	@RequestMapping(value = "/user/join.do")//가입 수행
-	public String Join() {
+	public String Join(Model model) {
+		System.out.println("NULL");
+		model.addAttribute("result", "NULL");
 		return "/user/join";
 	}	
 	

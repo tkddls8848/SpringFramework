@@ -95,13 +95,14 @@ function idCheck() {
 }
 
 $(document).ready(
-	function() {
-		var name = ${result}.response.name;
-		var id = ${result}.response.id;
-		$("#userid").val("NAVER"+id);
-		$("#name").val(name);
-	}
+		function() {
+			var name = ${result}.response.name;
+			var id = ${result}.response.id;
+			$("#userid").val("NAVER"+id);
+			$("#name").val(name);
+		}
 );
+
 </script>
 <title>회원가입</title>
 </head>
@@ -112,7 +113,7 @@ $(document).ready(
 			<input id="checkId" type="hidden" value="0">
 			<input id="checkPw" type="hidden" value="0">
 			<h2 class="form-signin-heading">회원가입</h2>
-			
+
 				<input type="text" name="userid" id="userid" class="form-control" placeholder="ID" required autofocus>
 				<input type="button" class="btn btn-normal btn-block" id="btnCheckuserid" value="ID체크">
 				
